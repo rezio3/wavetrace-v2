@@ -3,6 +3,7 @@ import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import VideoBG from "./layouts/VideoBG";
 import HomePage from "./pages/homePage/HomePage";
 import NavBar from "./components/navBar/NavBar";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const darkTheme = createTheme({
@@ -18,6 +19,7 @@ function App() {
         <div className="app-container">
           <NavBar />
           <HomePage />
+          <Footer />
         </div>
       </ThemeProvider>
     </>
