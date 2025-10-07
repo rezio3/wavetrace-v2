@@ -4,7 +4,7 @@ import "./video-bg.scss";
 const VideoBG = () => {
   return (
     <>
-      <div className="position-absolute top-0 video-bg">
+      <div className="video-bg">
         <video
           src={videoBg}
           autoPlay

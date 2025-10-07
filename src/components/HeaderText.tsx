@@ -6,7 +6,7 @@ type HeaderTextProps = {
   children: React.ReactNode;
   className?: string;
   fontSize?: number;
-  fontFamily?: "Carlito";
+  fontFamily?: "Carlito" | "Roboto, sans-serif" | "DM Sans, sans-serif";
   fontWeight?: FontWeight;
   letterSpacing?: number;
   headerType?: HeaderTag;
@@ -14,7 +14,7 @@ type HeaderTextProps = {
 
 const HeaderText: React.FC<HeaderTextProps> = ({
   children,
-  className,
+  className = "",
   fontSize = 45,
   fontFamily = "Carlito",
   fontWeight = 400,

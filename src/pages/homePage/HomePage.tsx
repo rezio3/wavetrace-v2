@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import HeaderText from "../../components/HeaderText";
 import SectionWrapper from "../../components/SectionWrapper";
-
 import Carousel from "./Carousel";
+import RoadMap from "./roadMap/RoadMap";
 
 const HomePage = () => {
   const handleGetStartedBtn = () => {};
@@ -10,7 +10,12 @@ const HomePage = () => {
   return (
     <>
       <SectionWrapper centered height={800}>
-        <HeaderText className="w-50" fontWeight={700} letterSpacing={5}>
+        <HeaderText
+          className="w-50"
+          headerType={"h1"}
+          fontWeight={700}
+          letterSpacing={5}
+        >
           Platform for bringing your musical visions and needs to life, using
           advanced production tools.
         </HeaderText>
@@ -24,6 +29,7 @@ const HomePage = () => {
         </Button>
         <Carousel />
       </SectionWrapper>
+      <RoadMap />
     </>
   );
 };
