@@ -1,7 +1,7 @@
 import { GiSoundWaves } from "react-icons/gi";
 import HeaderText from "../HeaderText";
 import SectionWrapper from "../SectionWrapper";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Button from "@mui/material/Button";
 
 const NavBar = () => {
   return (
@@ -18,9 +18,30 @@ const NavBar = () => {
         </HeaderText>
         <GiSoundWaves className="display-3 text-secondary" />
       </div>
-      <ShoppingCartIcon fontSize="medium" />
+      <div>
+        {navButtons.map((e) => (
+          <>
+            <Button
+              className="ms-4"
+              variant="text"
+              data-pageindex={1}
+              onClick={() => {}}
+            >
+              {e.btnText}
+            </Button>
+          </>
+        ))}
+
+        {/* <ShoppingCartIcon fontSize="medium" /> */}
+      </div>
     </SectionWrapper>
   );
 };
 
 export default NavBar;
+
+const navButtons = [
+  { btnText: "Music", link: "" },
+  { btnText: "Orders", link: "" },
+  { btnText: "Collaboration", link: "" },
+];
