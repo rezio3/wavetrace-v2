@@ -1,5 +1,5 @@
-import HeaderText from "../../../components/HeaderText";
-import SectionWrapper from "../../../components/SectionWrapper";
+import HeaderText from "../../HeaderText";
+import SectionWrapper from "../../SectionWrapper";
 import StepBox from "./StepBox";
 import "./RoadMap.scss";
 import FeatureBox from "./FeatureBox";

@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import HeaderText from "../../components/HeaderText";
 import SectionWrapper from "../../components/SectionWrapper";
-import Carousel from "./Carousel";
-import RoadMap from "./roadMap/RoadMap";
+import Carousel from "../../components/homePage/Carousel";
+import RoadMap from "../../components/homePage/roadMap/RoadMap";
 
 const HomePage = () => {
   const handleGetStartedBtn = () => {};

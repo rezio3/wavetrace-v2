@@ -4,6 +4,10 @@ import VideoBG from "./layouts/VideoBG";
 import HomePage from "./pages/homePage/HomePage";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import MusicPage from "./pages/musicPage/MusicPage";
+import OrdersPage from "./pages/ordersPage/OrdersPage";
+import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
 
 function App() {
   const darkTheme = createTheme({
@@ -15,12 +19,19 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <VideoBG />
-        <div className="app-container">
-          <NavBar />
-          <HomePage />
-          <Footer />
-        </div>
+        <Router>
+          <VideoBG />
+          <div className="app-container">
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/music" element={<MusicPage />} />
+              <Route path="/orders" element={<OrdersPage />} />
+              <Route path="/collaboration" element={<CollaborationPage />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
       </ThemeProvider>
     </>
   );

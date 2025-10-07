@@ -1,5 +1,5 @@
 import { CardContent } from "@mui/material";
-import HeaderText from "../../../components/HeaderText";
+import HeaderText from "../../HeaderText";
 
 type FeaturesProps = {
   header: string;
