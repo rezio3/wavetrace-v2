@@ -18,10 +18,10 @@ const MusicPage = () => {
 export default MusicPage;
 
 const musicFilterBoxes = [
+  { headerText: "Top choice", link: "" },
   { headerText: "Orchestral", link: "" },
-  { headerText: "Etnic", link: "" },
-  { headerText: "Pixel Art", link: "" },
-  { headerText: "Lofi", link: "" },
   { headerText: "Electronic", link: "" },
-  { headerText: "Epic", link: "" },
+  { headerText: "Pixel art", link: "" },
+  { headerText: "Etnic", link: "" },
+  { headerText: "Lo-Fi", link: "" },
 ];
