@@ -1,27 +1,20 @@
-import { CardContent } from "@mui/material";
-import HeaderText from "../../HeaderText";
+import GlassCard from "../../elements/GlassCard";
 
 type FeaturesProps = {
   header: string;
-  icon: any;
+  icon: React.ReactNode;
 };
 
 const FeatureBox: React.FC<FeaturesProps> = ({ header, icon }) => {
   return (
     <div className="mt-1 position-relative">
-      <div className="features-card position-relative w-75 d-flex flex-column justify-content-between">
-        <CardContent className="d-flex flex-column justify-content-around align-items-center h-100">
-          {icon}
-          <HeaderText
-            className="text-uppercase text-center"
-            fontFamily="DM Sans, sans-serif"
-            fontSize={18}
-            fontWeight={700}
-          >
-            {header}
-          </HeaderText>
-        </CardContent>
-      </div>
+      <GlassCard
+        header={header}
+        icon={icon}
+        height={160}
+        width={350}
+        className="mt-3"
+      />
     </div>
   );
 };

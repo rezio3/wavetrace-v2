@@ -11,7 +11,7 @@ const HomePage = () => {
     <>
       <SectionWrapper centered height={800}>
         <HeaderText
-          className="w-50"
+          className="w-50 mb-2"
           headerType={"h1"}
           fontWeight={700}
           letterSpacing={5}

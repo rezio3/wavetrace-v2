@@ -11,7 +11,7 @@ const StepBox: React.FC<StepBoxProps> = ({ number, header, txt }) => {
   return (
     <div className="mt-3 position-relative">
       <h3 className="position-absolute step-number-header">{number}</h3>
-      <div className="glass-card position-relative w-75 d-flex flex-column justify-content-between">
+      <div className="road-map-card position-relative w-75 d-flex flex-column justify-content-between">
         <CardContent className="pb-0">
           <HeaderText
             className="text-uppercase"
