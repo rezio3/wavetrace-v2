@@ -6,9 +6,10 @@ import SectionWrapper from "../SectionWrapper";
 import "./Footer.scss";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <SectionWrapper className="justify-content-between align-items-end mb-4 mt-5">
-      <span className="text-secondary">Wavetrace &copy; 2024</span>
+      <span className="text-secondary">Wavetrace &copy; {currentYear}</span>
       <div className="position-absolute b-0 socials-container">
         {socialIcons.map((e) => (
           <Button variant="text" className="social-icon">
