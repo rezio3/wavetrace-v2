@@ -9,6 +9,7 @@ type GlassCardProps = {
   width?: number;
   className?: string;
   transition?: boolean;
+  isTextBold?: boolean;
 };
 
 const GlassCard: React.FC<GlassCardProps> = ({
@@ -18,6 +19,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
   width = 200,
   className = "",
   transition,
+  isTextBold,
 }) => {
   const CardWrapper: React.ElementType = transition ? CardActionArea : "div";
   return (
@@ -36,7 +38,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
             className="text-uppercase text-center"
             fontFamily="DM Sans, sans-serif"
             fontSize={18}
-            fontWeight={700}
+            fontWeight={isTextBold ? 700 : 400}
           >
             {header}
           </HeaderText>

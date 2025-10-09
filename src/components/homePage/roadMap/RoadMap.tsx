@@ -2,13 +2,13 @@ import HeaderText from "../../HeaderText";
 import SectionWrapper from "../../SectionWrapper";
 import StepBox from "./StepBox";
 import "./RoadMap.scss";
-import FeatureBox from "./FeatureBox";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import StraightenIcon from "@mui/icons-material/Straighten";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import EditIcon from "@mui/icons-material/Edit";
+import GlassCard from "../../elements/GlassCard";
 
 const RoadMap = () => {
   return (
@@ -36,7 +36,18 @@ const RoadMap = () => {
       </HeaderText>
       <div className="d-flex w-100 justify-content-between flex-wrap  mb-5">
         {features.map((e) => {
-          return <FeatureBox header={e.header} icon={e.icon} />;
+          return (
+            <div className="mt-1 position-relative">
+              <GlassCard
+                header={e.header}
+                icon={e.icon}
+                height={160}
+                width={350}
+                className="mt-3"
+                isTextBold
+              />
+            </div>
+          );
         })}
       </div>
     </SectionWrapper>
