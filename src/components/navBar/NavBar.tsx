@@ -22,18 +22,17 @@ const NavBar = () => {
         <GiSoundWaves className="display-3 text-secondary" />
       </div>
       <div>
-        {navButtons.map((e) => (
-          <>
-            <Button
-              className="ms-4"
-              variant="text"
-              data-pageindex={1}
-              component={Link}
-              to={e.link}
-            >
-              {e.btnText}
-            </Button>
-          </>
+        {navButtons.map((e, index) => (
+          <Button
+            className="ms-4"
+            variant="text"
+            data-pageindex={1}
+            component={Link}
+            to={e.link}
+            key={e.btnText + index}
+          >
+            {e.btnText}
+          </Button>
         ))}
       </div>
     </SectionWrapper>

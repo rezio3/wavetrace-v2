@@ -22,8 +22,15 @@ const RoadMap = () => {
         How does it work?
       </HeaderText>
       <div className="d-flex w-100 justify-content-between flex-wrap mt-5 mb-5">
-        {stepBoxes.map((e) => {
-          return <StepBox number={e.number} header={e.header} txt={e.txt} />;
+        {stepBoxes.map((e, index) => {
+          return (
+            <StepBox
+              number={e.number}
+              header={e.header}
+              txt={e.txt}
+              key={e.header + index}
+            />
+          );
         })}
       </div>
       <HeaderText
@@ -37,7 +44,7 @@ const RoadMap = () => {
       <div className="d-flex w-100 justify-content-between flex-wrap  mb-5">
         {features.map((e) => {
           return (
-            <div className="mt-1 position-relative">
+            <div className="mt-1 position-relative" key={e.header}>
               <GlassCard
                 header={e.header}
                 icon={e.icon}
@@ -86,11 +93,11 @@ const stepBoxes = [
 
 const features = [
   {
-    header: "Music within 24 hours",
+    header: "Fast music editing",
     icon: <AccessTimeIcon className="feature-icon" />,
   },
   {
-    header: "Pay only if you like it",
+    header: "Affordable music customization",
     icon: <CurrencyExchangeIcon className="feature-icon" />,
   },
   {
@@ -102,7 +109,7 @@ const features = [
     icon: <StraightenIcon className="feature-icon" />,
   },
   {
-    header: "Free order placement",
+    header: "Easy order placement",
     icon: <FormatIndentIncreaseIcon className="feature-icon" />,
   },
   {
