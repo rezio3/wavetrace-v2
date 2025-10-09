@@ -52,7 +52,7 @@ const MusicPage = () => {
                 </span>
                 <Notification
                   type="error"
-                  alert="Error downloading tracks."
+                  alert="Error loading tracks."
                   open={notifyOpen}
                   setOpen={setNotifyOpen}
                 />
