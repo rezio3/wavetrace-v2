@@ -13,7 +13,7 @@ const PriceText: React.FC<PriceTextProps> = ({ children }) => {
       fontFamily="Roboto, sans-serif"
       className="d-flex align-items-center me-1"
     >
-      $ {children}
+      $ {!Number.isInteger(children) ? children : `${children}.00`}
     </HeaderText>
   );
 };
