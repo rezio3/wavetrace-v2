@@ -1,6 +1,6 @@
 export const queryKeys = {
   musicPage: {
-    musicList: ["music", "list"],
+    musicList: (page: number) => ["music", "list", page],
     musicItem: (id: string) => ["music", "item", id],
   },
 };
