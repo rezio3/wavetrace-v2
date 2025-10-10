@@ -12,20 +12,24 @@ type MusicListItemProps = {
 };
 
 const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
+  const trackTitle =
+    track.title.length > 35
+      ? track.title.slice(0, 32).trimEnd() + "..."
+      : track.title;
   return (
     <li
-      className="glass-music-item d-flex align-items-center px-4 my-2"
+      className="glass-music-item d-flex align-items-center px-3 my-2"
       style={{ height: 70 }}
     >
       <div className="d-flex align-items-center w-50">
         <AudioPlayer
           src={track.audioUrl}
           preload="none"
-          className="bg-transparent w-100 text-secondary shadow-none"
+          className="bg-transparent w-50 text-secondary shadow-none px-2"
         />
 
-        <HeaderText headerType="h6" fontSize={18}>
-          {track.title}
+        <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
+          {trackTitle}
         </HeaderText>
       </div>
       <div className="description-container">
