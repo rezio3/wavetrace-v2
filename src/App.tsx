@@ -19,7 +19,7 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Router>
+        <Router basename="/wavetrace-v2">
           <VideoBG />
           <div className="app-container">
             <NavBar />

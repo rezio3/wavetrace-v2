@@ -24,7 +24,7 @@ const HeaderText: React.FC<HeaderTextProps> = ({
   const Tag = headerType;
   return (
     <Tag
-      className={`${className}`}
+      className={`m-0 ${className} `}
       style={{
         fontSize: fontSize,
         fontFamily: fontFamily,

@@ -2,13 +2,13 @@ import HeaderText from "../../HeaderText";
 import SectionWrapper from "../../SectionWrapper";
 import StepBox from "./StepBox";
 import "./RoadMap.scss";
-import FeatureBox from "./FeatureBox";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import StraightenIcon from "@mui/icons-material/Straighten";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import EditIcon from "@mui/icons-material/Edit";
+import GlassCard from "../../elements/GlassCard";
 
 const RoadMap = () => {
   return (
@@ -22,8 +22,15 @@ const RoadMap = () => {
         How does it work?
       </HeaderText>
       <div className="d-flex w-100 justify-content-between flex-wrap mt-5 mb-5">
-        {stepBoxes.map((e) => {
-          return <StepBox number={e.number} header={e.header} txt={e.txt} />;
+        {stepBoxes.map((e, index) => {
+          return (
+            <StepBox
+              number={e.number}
+              header={e.header}
+              txt={e.txt}
+              key={e.header + index}
+            />
+          );
         })}
       </div>
       <HeaderText
@@ -36,7 +43,18 @@ const RoadMap = () => {
       </HeaderText>
       <div className="d-flex w-100 justify-content-between flex-wrap  mb-5">
         {features.map((e) => {
-          return <FeatureBox header={e.header} icon={e.icon} />;
+          return (
+            <div className="mt-1 position-relative" key={e.header}>
+              <GlassCard
+                header={e.header}
+                icon={e.icon}
+                height={160}
+                width={350}
+                className="mt-3"
+                isTextBold
+              />
+            </div>
+          );
         })}
       </div>
     </SectionWrapper>
@@ -75,11 +93,11 @@ const stepBoxes = [
 
 const features = [
   {
-    header: "Music within 24 hours",
+    header: "Fast music editing",
     icon: <AccessTimeIcon className="feature-icon" />,
   },
   {
-    header: "Pay only if you like it",
+    header: "Affordable music customization",
     icon: <CurrencyExchangeIcon className="feature-icon" />,
   },
   {
@@ -91,7 +109,7 @@ const features = [
     icon: <StraightenIcon className="feature-icon" />,
   },
   {
-    header: "Free order placement",
+    header: "Easy order placement",
     icon: <FormatIndentIncreaseIcon className="feature-icon" />,
   },
   {

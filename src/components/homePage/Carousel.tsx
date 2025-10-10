@@ -21,8 +21,8 @@ const Carousel = () => {
   return (
     <div className="position-relative carousel-container mt-5">
       <div className="carousel d-flex">
-        {logos.map((logo) => (
-          <ImageItem src={logo.src} alt={logo.alt} />
+        {logos.map((logo, index) => (
+          <ImageItem src={logo.src} alt={logo.alt} key={logo.alt + index} />
         ))}
       </div>
     </div>
