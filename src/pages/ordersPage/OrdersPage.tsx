@@ -1,8 +1,11 @@
+import SectionWrapper from "../../components/SectionWrapper";
+import OrderForm from "../../components/ordersPage/OrderForm";
+
 const OrdersPage = () => {
   return (
-    <>
-      <h1>Siema Orders Page</h1>
-    </>
+    <SectionWrapper centered>
+      <OrderForm />
+    </SectionWrapper>
   );
 };
 

@@ -8,7 +8,7 @@ import { queryKeys } from "../../assets/queryKeys";
 import {
   getTrackList,
   type MusicListResponse,
-} from "../../components/musicPage/musicPage";
+} from "../../components/musicPage/musicPageCommon";
 import { useEffect, useState } from "react";
 import Notification from "../../components/elements/Notification";
 

@@ -1,6 +1,6 @@
 import { Pagination, Stack } from "@mui/material";
 import MusicListItem from "./MusicListItem";
-import type { MusicItem } from "./musicPage";
+import type { MusicItem } from "./musicPageCommon";
 
 type MusicListProps = {
   tracks: MusicItem[];
