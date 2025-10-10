@@ -5,14 +5,17 @@ import SectionWrapper from "../../components/SectionWrapper";
 import Skeleton from "../../components/elements/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "../../assets/queryKeys";
-import { getTrackList } from "../../components/musicPage/musicPage";
+import {
+  getTrackList,
+  type MusicListResponse,
+} from "../../components/musicPage/musicPage";
 import { useEffect, useState } from "react";
 import Notification from "../../components/elements/Notification";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const tracksLimitInOnePage = 10;
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<MusicListResponse>({
     queryKey: queryKeys.musicPage.musicList(currentPage),
     queryFn: () => getTrackList(currentPage, tracksLimitInOnePage),
   });
@@ -75,10 +78,10 @@ const MusicPage = () => {
 export default MusicPage;
 
 const musicFilterBoxes = [
-  { headerText: "New", link: "" },
+  { headerText: "All", link: "" },
   { headerText: "Orchestral", link: "" },
   { headerText: "Electronic", link: "" },
-  { headerText: "Pixel art", link: "" },
   { headerText: "Etnic", link: "" },
-  { headerText: "Lo-Fi", link: "" },
+  { headerText: "Kids", link: "" },
+  { headerText: "Vocal", link: "" },
 ];

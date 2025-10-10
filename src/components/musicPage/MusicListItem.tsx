@@ -1,4 +1,4 @@
-import type { MusicItem } from "./musicPageTypes";
+import type { MusicItem } from "./musicPage";
 import { AudioPlayer } from "react-audio-play";
 import HeaderText from "../HeaderText";
 import PriceText from "../elements/PriceText";
@@ -31,6 +31,16 @@ const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
         <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
           {trackTitle}
         </HeaderText>
+        <div className="track-type-container d-flex flex-column align-items-end gap-1">
+          {track.type.map((type) => (
+            <span
+              className="track-type-badge d-flex justify-content-center"
+              style={{ fontSize: 11, fontWeight: 400 }}
+            >
+              {type}
+            </span>
+          ))}
+        </div>
       </div>
       <div className="description-container">
         <MutedText fontSize={12}>{track.description}</MutedText>
