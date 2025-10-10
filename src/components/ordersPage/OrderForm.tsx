@@ -5,6 +5,8 @@ import { Controller, useForm } from "react-hook-form";
 import { sendOrderRequest } from "./orderFormCommon";
 import type { OrderFormData } from "./orderFormCommon";
 import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+import Notification from "../elements/Notification";
 
 const OrderForm = () => {
   const { control, handleSubmit, reset } = useForm<OrderFormData>({
@@ -14,17 +16,34 @@ const OrderForm = () => {
   const mutation = useMutation({
     mutationFn: sendOrderRequest,
     onSuccess: () => {
-      alert("Request sent successfully!");
+      setNotification({
+        isOpen: true,
+        type: "success",
+        alert: "Your message has been sent successfully!",
+      });
       reset();
     },
     onError: (err: any) => {
-      console.error(err);
-      alert("Something went wrong. Please try again later.");
+      setNotification({
+        isOpen: true,
+        type: "error",
+        alert: "Something went wrong with message delivery.",
+      });
+      console.log(err);
     },
   });
 
-  // 🧠 handleSubmit przekazujemy do przycisku onClick
   const onSubmit = (data: OrderFormData) => mutation.mutate(data);
+
+  const [notification, setNotification] = useState<{
+    isOpen: boolean;
+    type: "error" | "success";
+    alert: string;
+  }>({
+    isOpen: false,
+    type: "success",
+    alert: "",
+  });
 
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3">
@@ -79,6 +98,12 @@ const OrderForm = () => {
       >
         Send request
       </Button>
+      <Notification
+        type={notification.type}
+        alert={notification.alert}
+        open={notification.isOpen}
+        setOpen={() => setNotification({ ...notification, isOpen: false })}
+      />
     </GlassContainer>
   );
 };
