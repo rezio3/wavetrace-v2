@@ -5,6 +5,8 @@ import PriceText from "../elements/PriceText";
 import { Button } from "@mui/material";
 import "./MusicListItem.scss";
 import MutedText from "../elements/MutedText";
+import { useState } from "react";
+import DialogProceedWindow from "./proceedWindow/DialogProceedWindow";
 
 type MusicListItemProps = {
   track: MusicItem;
@@ -12,6 +14,8 @@ type MusicListItemProps = {
 };
 
 const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
+  const [isOpenProceedDialog, setIsOpenProceedDialog] = useState(false);
+  const [initialTabInProceedDialog, setInitialTabInProceedDialog] = useState(0);
   const trackTitle =
     track.title.length > 35
       ? track.title.slice(0, 32).trimEnd() + "..."
@@ -48,13 +52,33 @@ const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
       </div>
       <div className="d-flex ms-auto gap-2">
         <PriceText>{track.price}</PriceText>
-        <Button variant="outlined" color="success">
+        <Button
+          variant="outlined"
+          color="success"
+          onClick={() => {
+            setInitialTabInProceedDialog(0);
+            setIsOpenProceedDialog(true);
+          }}
+        >
           Collect
         </Button>
-        <Button variant="outlined" color="primary">
+        <Button
+          variant="outlined"
+          color="primary"
+          onClick={() => {
+            setInitialTabInProceedDialog(1);
+            setIsOpenProceedDialog(true);
+          }}
+        >
           Edit
         </Button>
       </div>
+      <DialogProceedWindow
+        isOpen={isOpenProceedDialog}
+        setIsOpen={setIsOpenProceedDialog}
+        initialTab={initialTabInProceedDialog}
+        trackId={track._id}
+      />
     </li>
   );
 };
