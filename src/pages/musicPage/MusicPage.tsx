@@ -14,6 +14,7 @@ import Notification from "../../components/elements/Notification";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchValue, setSearchValue] = useState("");
   const tracksLimitInOnePage = 10;
   const { data, isLoading, isError } = useQuery<MusicListResponse>({
     queryKey: queryKeys.musicPage.musicList(currentPage),
@@ -43,7 +44,7 @@ const MusicPage = () => {
             />
           ))}
         </div>
-        <SearchBar />
+        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
         {isLoading ? (
           <Skeleton count={5} height={70} className="mt-2" />
         ) : (

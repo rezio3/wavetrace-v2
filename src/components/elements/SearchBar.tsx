@@ -2,8 +2,26 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Toolbar } from "@mui/material";
+import { useEffect, useState } from "react";
 
-const SearchBar = () => {
+type SearchBarProps = {
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+};
+
+const SearchBar: React.FC<SearchBarProps> = ({
+  searchValue,
+  setSearchValue,
+}) => {
+  const [localValue, setLocalValue] = useState(searchValue);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSearchValue(localValue);
+    }, 300); // ⏱️ opóźnienie 300 ms
+    return () => clearTimeout(timeout);
+  }, [localValue, setSearchValue]);
+
   return (
     <Toolbar className="ps-0 mt-2 w-full">
       <Search>
@@ -13,6 +31,8 @@ const SearchBar = () => {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
+          onChange={(e) => setLocalValue(e.target.value)}
+          value={localValue}
         />
       </Search>
     </Toolbar>

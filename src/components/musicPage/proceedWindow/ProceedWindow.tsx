@@ -122,8 +122,8 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
           variant="fullWidth"
           aria-label="action tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="Buy" {...a11yProps(0)} />
+          <Tab label="Edit" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} dir={theme.direction}>
