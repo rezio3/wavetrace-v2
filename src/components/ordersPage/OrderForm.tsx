@@ -12,10 +12,14 @@ const OrderForm = () => {
   const { control, handleSubmit, reset } = useForm<OrderFormData>({
     defaultValues: { email: "", message: "" },
   });
-
+  const [isLoading, setIsLoading] = useState(false);
   const mutation = useMutation({
     mutationFn: sendOrderRequest,
+    onMutate: () => {
+      setIsLoading(true);
+    },
     onSuccess: () => {
+      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "success",
@@ -24,6 +28,7 @@ const OrderForm = () => {
       reset();
     },
     onError: (err: any) => {
+      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "error",
@@ -94,7 +99,8 @@ const OrderForm = () => {
         variant="contained"
         className="py-2"
         onClick={handleSubmit(onSubmit)}
-        disabled={false}
+        // disabled={false}
+        loading={isLoading}
       >
         Send request
       </Button>
