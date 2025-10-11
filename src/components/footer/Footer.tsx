@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import SectionWrapper from "../SectionWrapper";
+import SectionWrapper from "../elements/SectionWrapper";
 import "./Footer.scss";
 
 const Footer = () => {

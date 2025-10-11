@@ -1,4 +1,4 @@
-import ImageItem from "../ImageItem";
+import ImageItem from "../elements/ImageItem";
 import arturiaLogo from "../../img/arturia.png";
 import cubaseLogo from "../../img/cubase.png";
 import ewLogo from "../../img/ew.png";

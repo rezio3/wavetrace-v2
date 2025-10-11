@@ -1,4 +1,4 @@
-import HeaderText from "../HeaderText";
+import HeaderText from "./HeaderText";
 
 type PriceTextProps = {
   children: React.ReactNode;

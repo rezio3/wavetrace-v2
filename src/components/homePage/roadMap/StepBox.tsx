@@ -1,5 +1,5 @@
 import { Button, CardActions, CardContent } from "@mui/material";
-import HeaderText from "../../HeaderText";
+import HeaderText from "../../elements/HeaderText";
 
 type StepBoxProps = {
   number: string;

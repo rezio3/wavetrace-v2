@@ -1,6 +1,6 @@
 import { GiSoundWaves } from "react-icons/gi";
-import HeaderText from "../HeaderText";
-import SectionWrapper from "../SectionWrapper";
+import HeaderText from "../elements/HeaderText";
+import SectionWrapper from "../elements/SectionWrapper";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 

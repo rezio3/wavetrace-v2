@@ -1,7 +1,7 @@
 import GlassCard from "../../components/elements/GlassCard";
 import SearchBar from "../../components/elements/SearchBar";
 import MusicList from "../../components/musicPage/MusicList";
-import SectionWrapper from "../../components/SectionWrapper";
+import SectionWrapper from "../../components/elements/SectionWrapper";
 import Skeleton from "../../components/elements/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "../../assets/queryKeys";

@@ -1,6 +1,6 @@
 import type { MusicItem } from "./musicPageCommon";
 import { AudioPlayer } from "react-audio-play";
-import HeaderText from "../HeaderText";
+import HeaderText from "../elements/HeaderText";
 import PriceText from "../elements/PriceText";
 import { Button } from "@mui/material";
 import "./MusicListItem.scss";

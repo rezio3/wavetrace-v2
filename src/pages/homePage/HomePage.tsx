@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
-import HeaderText from "../../components/HeaderText";
-import SectionWrapper from "../../components/SectionWrapper";
+import HeaderText from "../../components/elements/HeaderText";
+import SectionWrapper from "../../components/elements/SectionWrapper";
 import Carousel from "../../components/homePage/Carousel";
 import RoadMap from "../../components/homePage/roadMap/RoadMap";
 

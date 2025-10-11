@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import GlassContainer from "../elements/GlassContainer";
-import HeaderText from "../HeaderText";
+import HeaderText from "../elements/HeaderText";
 import { Controller, useForm } from "react-hook-form";
 import { sendOrderRequest } from "./orderFormCommon";
 import type { OrderFormData } from "./orderFormCommon";

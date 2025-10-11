@@ -1,5 +1,5 @@
 import { CardActionArea, CardContent } from "@mui/material";
-import HeaderText from "../HeaderText";
+import HeaderText from "./HeaderText";
 import "./GlassCard.scss";
 
 type GlassCardProps = {

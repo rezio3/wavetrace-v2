@@ -1,5 +1,5 @@
-import HeaderText from "../../HeaderText";
-import SectionWrapper from "../../SectionWrapper";
+import HeaderText from "../../elements/HeaderText";
+import SectionWrapper from "../../elements/SectionWrapper";
 import StepBox from "./StepBox";
 import "./RoadMap.scss";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
