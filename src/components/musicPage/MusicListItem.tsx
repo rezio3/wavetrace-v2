@@ -1,25 +1,39 @@
 import type { MusicItem } from "./musicPageCommon";
-import { AudioPlayer } from "react-audio-play";
+import { AudioPlayer, type AudioPlayerRef } from "react-audio-play";
 import HeaderText from "../elements/HeaderText";
 import PriceText from "../elements/PriceText";
 import { Button } from "@mui/material";
 import "./MusicListItem.scss";
 import MutedText from "../elements/MutedText";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DialogProceedWindow from "./proceedWindow/DialogProceedWindow";
 
 type MusicListItemProps = {
   track: MusicItem;
-  className?: string;
+  activeTrackId: string | null;
+  setActiveTrackId: (id: string | null) => void;
 };
 
-const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
+const MusicListItem: React.FC<MusicListItemProps> = ({
+  track,
+  activeTrackId,
+  setActiveTrackId,
+}) => {
   const [isOpenProceedDialog, setIsOpenProceedDialog] = useState(false);
   const [initialTabInProceedDialog, setInitialTabInProceedDialog] = useState(0);
   const trackTitle =
     track.title.length > 35
       ? track.title.slice(0, 32).trimEnd() + "..."
       : track.title;
+
+  const playerRef = useRef<AudioPlayerRef>(null);
+  // const isPlaying = activeTrackId === track._id;
+  const handleStop = () => {
+    playerRef.current?.stop();
+  };
+  useEffect(() => {
+    if (activeTrackId !== track._id) handleStop();
+  }, [activeTrackId]);
   return (
     <li
       className="glass-music-item d-flex align-items-center px-3 my-2"
@@ -30,6 +44,8 @@ const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
           src={track.audioUrl}
           preload="none"
           className="bg-transparent w-50 text-secondary shadow-none px-2"
+          onPlay={() => setActiveTrackId(track._id)} // oznacz jako aktywny
+          ref={playerRef}
         />
 
         <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
@@ -60,7 +76,7 @@ const MusicListItem: React.FC<MusicListItemProps> = ({ track }) => {
             setIsOpenProceedDialog(true);
           }}
         >
-          Collect
+          Buy
         </Button>
         <Button
           variant="outlined"

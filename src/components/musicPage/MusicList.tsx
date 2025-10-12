@@ -1,6 +1,7 @@
 import { Pagination, Stack } from "@mui/material";
 import MusicListItem from "./MusicListItem";
 import type { MusicItem } from "./musicPageCommon";
+import { useEffect, useState } from "react";
 
 type MusicListProps = {
   tracks: MusicItem[];
@@ -15,11 +16,20 @@ const MusicList: React.FC<MusicListProps> = ({
   onPageChange,
   totalPages,
 }) => {
+  const [activeTrackId, setActiveTrackId] = useState<string | null>(null);
+  useEffect(() => {
+    console.log(activeTrackId);
+  }, [activeTrackId]);
   return (
     <>
       <ul className="list-unstyled p-0">
         {tracks.map((track, index) => (
-          <MusicListItem track={track} key={track.title + index} />
+          <MusicListItem
+            track={track}
+            activeTrackId={activeTrackId}
+            setActiveTrackId={setActiveTrackId}
+            key={track.title + index}
+          />
         ))}
       </ul>
       <div className="d-flex justify-content-center">
