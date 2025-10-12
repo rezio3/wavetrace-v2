@@ -13,6 +13,7 @@ import {
 import { useEffect, useReducer, useState } from "react";
 import Notification from "../../components/elements/Notification";
 import { filtersReducer } from "../../components/musicPage/reducer";
+import FilterIndicator from "../../components/musicPage/FilterIndicator";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -56,6 +57,8 @@ const MusicPage = () => {
           ))}
         </div>
         <SearchBar filters={filters} dispatch={dispatch} />
+        <FilterIndicator filters={filters} />
+
         {isLoading ? (
           <Skeleton count={5} height={70} className="mt-2" />
         ) : (
