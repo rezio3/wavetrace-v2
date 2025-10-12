@@ -2,9 +2,19 @@ import { baseUrl } from "../../assets/baseUrl";
 
 export const getTrackList = async (
   page = 1,
-  limit = 10
+  limit = 10,
+  filters = { searchFilter: "", typeFilter: "" }
 ): Promise<MusicListResponse> => {
-  const res = await fetch(`${baseUrl}api/tracks?page=${page}&limit=${limit}`);
+  const query = new URLSearchParams({
+    page: page.toString(),
+    limit: limit.toString(),
+  });
+
+  const { searchFilter, typeFilter } = filters;
+
+  if (searchFilter?.trim()) query.append("search", searchFilter);
+  if (typeFilter?.trim()) query.append("filter", typeFilter);
+  const res = await fetch(`${baseUrl}api/tracks?${query.toString()}`);
   if (!res.ok) throw new Error("Error during download tracks.");
   return res.json();
 };
@@ -25,4 +35,9 @@ export type MusicItem = {
   audioUrl: string;
   type: string[];
   tags: string;
+};
+
+export type Filters = {
+  searchFilter: string;
+  typeFilter: string;
 };

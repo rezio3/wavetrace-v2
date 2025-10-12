@@ -1,6 +1,7 @@
 import { CardActionArea, CardContent } from "@mui/material";
 import HeaderText from "./HeaderText";
 import "./GlassCard.scss";
+import type { Filters } from "../musicPage/musicPageCommon";
 
 type GlassCardProps = {
   header: string;
@@ -10,6 +11,7 @@ type GlassCardProps = {
   className?: string;
   transition?: boolean;
   isTextBold?: boolean;
+  setFilters: (value: Filters) => void;
 };
 
 const GlassCard: React.FC<GlassCardProps> = ({
@@ -20,8 +22,10 @@ const GlassCard: React.FC<GlassCardProps> = ({
   className = "",
   transition,
   isTextBold,
+  setFilters,
 }) => {
   const CardWrapper: React.ElementType = transition ? CardActionArea : "div";
+
   return (
     <div
       className={`glass-card position-relative d-flex flex-column justify-content-between ${
@@ -29,7 +33,12 @@ const GlassCard: React.FC<GlassCardProps> = ({
       } ${className}`}
       style={{ height: height, width: width }}
     >
-      <CardWrapper className="h-100">
+      <CardWrapper
+        className="h-100"
+        onClick={() => {
+          setFilters({ searchFilter: "", typeFilter: header });
+        }}
+      >
         <CardContent
           className={`d-flex flex-column justify-content-around align-items-center p-3 h-100`}
         >

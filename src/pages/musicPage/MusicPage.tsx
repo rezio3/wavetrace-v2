@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "../../assets/queryKeys";
 import {
   getTrackList,
+  type Filters,
   type MusicListResponse,
 } from "../../components/musicPage/musicPageCommon";
 import { useEffect, useState } from "react";
@@ -14,11 +15,15 @@ import Notification from "../../components/elements/Notification";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchValue, setSearchValue] = useState("");
+  const [filters, setFilters] = useState<Filters>({
+    searchFilter: "",
+    typeFilter: "",
+  });
+
   const tracksLimitInOnePage = 10;
   const { data, isLoading, isError } = useQuery<MusicListResponse>({
-    queryKey: queryKeys.musicPage.musicList(currentPage),
-    queryFn: () => getTrackList(currentPage, tracksLimitInOnePage),
+    queryKey: queryKeys.musicPage.musicList(currentPage, filters),
+    queryFn: () => getTrackList(currentPage, tracksLimitInOnePage, filters),
   });
 
   const tracks = data?.tracks || [];
@@ -32,6 +37,10 @@ const MusicPage = () => {
     }
   }, [isError]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters]);
+
   return (
     <>
       <SectionWrapper className="d-flex flex-column mt-5">
@@ -41,10 +50,11 @@ const MusicPage = () => {
               header={filterBox.headerText}
               transition
               key={"filter-box" + filterBox.headerText + index}
+              setFilters={setFilters}
             />
           ))}
         </div>
-        <SearchBar searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBar filters={filters} setFilters={setFilters} />
         {isLoading ? (
           <Skeleton count={5} height={70} className="mt-2" />
         ) : (

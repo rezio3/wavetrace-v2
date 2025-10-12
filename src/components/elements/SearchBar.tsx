@@ -3,24 +3,22 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Toolbar } from "@mui/material";
 import { useEffect, useState } from "react";
+import type { Filters } from "../musicPage/musicPageCommon";
 
 type SearchBarProps = {
-  searchValue: string;
-  setSearchValue: (value: string) => void;
+  filters: Filters;
+  setFilters: (value: Filters) => void;
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({
-  searchValue,
-  setSearchValue,
-}) => {
-  const [localValue, setLocalValue] = useState(searchValue);
+const SearchBar: React.FC<SearchBarProps> = ({ filters, setFilters }) => {
+  const [localValue, setLocalValue] = useState(filters.searchFilter);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setSearchValue(localValue);
-    }, 300); // ⏱️ opóźnienie 300 ms
+      setFilters({ searchFilter: localValue, typeFilter: "" });
+    }, 300);
     return () => clearTimeout(timeout);
-  }, [localValue, setSearchValue]);
+  }, [localValue, setFilters]);
 
   return (
     <Toolbar className="ps-0 mt-2 w-full">
