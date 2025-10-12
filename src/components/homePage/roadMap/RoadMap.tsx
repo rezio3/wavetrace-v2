@@ -66,28 +66,28 @@ export default RoadMap;
 const stepBoxes = [
   {
     number: "01",
-    header: "Login",
-    txt: "Create an account on the platform.",
+    header: "Explore",
+    txt: "Find the music that best suits your needs.",
   },
   {
     number: "02",
-    header: "Order music for free",
-    txt: "Place a free order using the form. The more detailed the description, the more precisely the order will be executed.",
+    header: "Buy or edit",
+    txt: "Purchase a track or request edits to make it fit your project even better.",
   },
   {
     number: "03",
-    header: "Realization in 24 hours",
-    txt: "After 24h, you will receive a free one-minute sample of the music with a watermark to listen to.",
+    header: "Offer",
+    txt: "We’ll get in touch with you with an offer to edit the track you selected.",
   },
   {
     number: "04",
-    header: "Buy or edit",
-    txt: "You can purchase your music or edit it according to your preferences.",
+    header: "Unique",
+    txt: "If you need a unique soundtrack, you can order a custom composition made specifically for your project.",
   },
   {
     number: "05",
-    header: "Extend",
-    txt: "Extend the music you ordered to a specific length.",
+    header: "Stay in touch",
+    txt: "Collaborate with our artists to create your dream projects together.",
   },
 ];
 
