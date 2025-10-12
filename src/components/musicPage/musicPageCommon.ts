@@ -39,12 +39,12 @@ export type MusicItem = {
 
 export type Filters = {
   searchFilter: string;
-  typeFilter: MusicFilterType;
+  typeFilter: string;
 };
 
 export type FilterAction =
   | { type: "SET_SEARCH_FILTER"; payload: string }
-  | { type: "SET_TYPE_FILTER"; payload: MusicFilterType }
+  | { type: "SET_TYPE_FILTER"; payload: string }
   | { type: "RESET" };
 
 export const MUSIC_FILTER_TYPES = [
@@ -55,5 +55,3 @@ export const MUSIC_FILTER_TYPES = [
   "Kids",
   "Vocal",
 ] as const;
-
-export type MusicFilterType = (typeof MUSIC_FILTER_TYPES)[number] | "";

@@ -6,7 +6,7 @@ import CustomText from "../../components/elements/CustomText";
 const OrdersPage = () => {
   return (
     <>
-      <SectionWrapper centered className="align-items-center">
+      <SectionWrapper centered className="align-items-center gap-3">
         <HeaderText
           headerType="h2"
           fontSize={40}
@@ -31,7 +31,7 @@ const OrdersPage = () => {
           fontFamily={"Roboto, sans-serif"}
           className="text-center mb-5"
         >
-          We’ll reply as quickly as we can.
+          We’ll get back to you as soon as possible with a personalized offer.
         </CustomText>
       </SectionWrapper>
 
