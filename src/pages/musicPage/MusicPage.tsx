@@ -6,16 +6,17 @@ import Skeleton from "../../components/elements/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { queryKeys } from "../../assets/queryKeys";
 import {
-  getTrackList,
-  type Filters,
+  getMusicList,
+  MUSIC_FILTER_TYPES,
   type MusicListResponse,
 } from "../../components/musicPage/musicPageCommon";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Notification from "../../components/elements/Notification";
+import { filtersReducer } from "../../components/musicPage/reducer";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [filters, setFilters] = useState<Filters>({
+  const [filters, dispatch] = useReducer(filtersReducer, {
     searchFilter: "",
     typeFilter: "",
   });
@@ -23,7 +24,7 @@ const MusicPage = () => {
   const tracksLimitInOnePage = 10;
   const { data, isLoading, isError } = useQuery<MusicListResponse>({
     queryKey: queryKeys.musicPage.musicList(currentPage, filters),
-    queryFn: () => getTrackList(currentPage, tracksLimitInOnePage, filters),
+    queryFn: () => getMusicList(currentPage, tracksLimitInOnePage, filters),
   });
 
   const tracks = data?.tracks || [];
@@ -45,16 +46,16 @@ const MusicPage = () => {
     <>
       <SectionWrapper className="d-flex flex-column mt-5">
         <div className="d-flex gap-3 flex-wrap justify-content-between">
-          {musicFilterBoxes.map((filterBox, index) => (
+          {MUSIC_FILTER_TYPES.map((type, index) => (
             <GlassCard
-              header={filterBox.headerText}
+              header={type}
               transition
-              key={"filter-box" + filterBox.headerText + index}
-              setFilters={setFilters}
+              key={"filter-box" + type + index}
+              dispatch={dispatch}
             />
           ))}
         </div>
-        <SearchBar filters={filters} setFilters={setFilters} />
+        <SearchBar filters={filters} dispatch={dispatch} />
         {isLoading ? (
           <Skeleton count={5} height={70} className="mt-2" />
         ) : (
@@ -88,11 +89,17 @@ const MusicPage = () => {
 
 export default MusicPage;
 
-const musicFilterBoxes = [
-  { headerText: "All", link: "" },
-  { headerText: "Orchestral", link: "" },
-  { headerText: "Electronic", link: "" },
-  { headerText: "Etnic", link: "" },
-  { headerText: "Kids", link: "" },
-  { headerText: "Vocal", link: "" },
-];
+// const musicFilterBoxes = [
+//   { type: "All" },
+//   { type: "Orchestral" },
+//   { type: "Electronic" },
+//   { type: "Etnic" },
+//   { type: "Kids" },
+//   { type: "Vocal" },
+// ];
+
+// TO DO
+// 1. CORS
+// 2. DEBOUNCE
+// 3. REDUCER
+// 4. IP w MongoDB

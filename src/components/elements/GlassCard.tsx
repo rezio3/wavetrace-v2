@@ -1,17 +1,21 @@
 import { CardActionArea, CardContent } from "@mui/material";
 import HeaderText from "./HeaderText";
 import "./GlassCard.scss";
-import type { Filters } from "../musicPage/musicPageCommon";
+import type {
+  FilterAction,
+  MusicFilterType,
+} from "../musicPage/musicPageCommon";
+import type React from "react";
 
 type GlassCardProps = {
-  header: string;
+  header: MusicFilterType;
   icon?: React.ReactNode;
   height?: number;
   width?: number;
   className?: string;
   transition?: boolean;
   isTextBold?: boolean;
-  setFilters: (value: Filters) => void;
+  dispatch: React.Dispatch<FilterAction>;
 };
 
 const GlassCard: React.FC<GlassCardProps> = ({
@@ -22,7 +26,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
   className = "",
   transition,
   isTextBold,
-  setFilters,
+  dispatch,
 }) => {
   const CardWrapper: React.ElementType = transition ? CardActionArea : "div";
 
@@ -36,7 +40,11 @@ const GlassCard: React.FC<GlassCardProps> = ({
       <CardWrapper
         className="h-100"
         onClick={() => {
-          setFilters({ searchFilter: "", typeFilter: header });
+          if (header === "All") {
+            dispatch({ type: "RESET" });
+          } else {
+            dispatch({ type: "SET_TYPE_FILTER", payload: header });
+          }
         }}
       >
         <CardContent

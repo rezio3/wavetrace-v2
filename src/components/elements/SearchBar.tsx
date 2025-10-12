@@ -2,24 +2,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Toolbar } from "@mui/material";
-import { useEffect, useState } from "react";
-import type { Filters } from "../musicPage/musicPageCommon";
+// import { useEffect, useState } from "react";
+import type { FilterAction, Filters } from "../musicPage/musicPageCommon";
 
 type SearchBarProps = {
   filters: Filters;
-  setFilters: (value: Filters) => void;
+  dispatch: React.Dispatch<FilterAction>;
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({ filters, setFilters }) => {
-  const [localValue, setLocalValue] = useState(filters.searchFilter);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setFilters({ searchFilter: localValue, typeFilter: "" });
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, [localValue, setFilters]);
-
+const SearchBar: React.FC<SearchBarProps> = ({ filters, dispatch }) => {
   return (
     <Toolbar className="ps-0 mt-2 w-full">
       <Search>
@@ -29,8 +20,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ filters, setFilters }) => {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => setLocalValue(e.target.value)}
-          value={localValue}
+          onChange={(e) =>
+            dispatch({ type: "SET_SEARCH_FILTER", payload: e.target.value })
+          }
+          value={filters.searchFilter}
         />
       </Search>
     </Toolbar>

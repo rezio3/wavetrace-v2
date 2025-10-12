@@ -1,6 +1,6 @@
 import { baseUrl } from "../../assets/baseUrl";
 
-export const getTrackList = async (
+export const getMusicList = async (
   page = 1,
   limit = 10,
   filters = { searchFilter: "", typeFilter: "" }
@@ -39,5 +39,21 @@ export type MusicItem = {
 
 export type Filters = {
   searchFilter: string;
-  typeFilter: string;
+  typeFilter: MusicFilterType;
 };
+
+export type FilterAction =
+  | { type: "SET_SEARCH_FILTER"; payload: string }
+  | { type: "SET_TYPE_FILTER"; payload: MusicFilterType }
+  | { type: "RESET" };
+
+export const MUSIC_FILTER_TYPES = [
+  "All",
+  "Orchestral",
+  "Electronic",
+  "Etnic",
+  "Kids",
+  "Vocal",
+] as const;
+
+export type MusicFilterType = (typeof MUSIC_FILTER_TYPES)[number] | "";
