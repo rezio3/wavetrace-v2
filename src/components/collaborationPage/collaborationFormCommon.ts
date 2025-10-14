@@ -1,7 +1,6 @@
 import { baseUrl } from "../../assets/baseUrl";
 
 export const sendCollaborationRequest = async (data: CollaborationFormData) => {
-  console.log(data);
   const res = await fetch(`${baseUrl}api/collaboration`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

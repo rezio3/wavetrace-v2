@@ -14,15 +14,10 @@ const CollaborationForm = () => {
   const { control, handleSubmit, reset } = useForm<CollaborationFormData>({
     defaultValues: { name: "", email: "", message: "", portfolioLink: "" },
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const mutation = useMutation({
     mutationFn: sendCollaborationRequest,
-    onMutate: () => {
-      setIsLoading(true);
-    },
     onSuccess: () => {
-      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "success",
@@ -31,7 +26,6 @@ const CollaborationForm = () => {
       reset();
     },
     onError: (err: any) => {
-      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "error",
@@ -126,7 +120,7 @@ const CollaborationForm = () => {
         variant="contained"
         className="py-2"
         onClick={handleSubmit(onSubmit)}
-        loading={isLoading}
+        loading={mutation.isPending}
       >
         Start Collaborating
       </Button>

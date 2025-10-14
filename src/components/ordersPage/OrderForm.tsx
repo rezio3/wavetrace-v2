@@ -14,14 +14,10 @@ const OrderForm = () => {
   const { control, handleSubmit, reset } = useForm<OrderFormData>({
     defaultValues: { email: "", message: "" },
   });
-  const [isLoading, setIsLoading] = useState(false);
+
   const mutation = useMutation({
     mutationFn: sendOrderRequest,
-    onMutate: () => {
-      setIsLoading(true);
-    },
     onSuccess: () => {
-      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "success",
@@ -30,7 +26,6 @@ const OrderForm = () => {
       reset();
     },
     onError: (err: any) => {
-      setIsLoading(false);
       setNotification({
         isOpen: true,
         type: "error",
@@ -51,6 +46,7 @@ const OrderForm = () => {
     type: "success",
     alert: "",
   });
+  console.log(mutation.isPending);
 
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3">
@@ -115,7 +111,7 @@ const OrderForm = () => {
         variant="contained"
         className="py-2"
         onClick={handleSubmit(onSubmit)}
-        loading={isLoading}
+        loading={mutation.isPending}
       >
         Send request
       </Button>
