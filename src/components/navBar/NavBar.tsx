@@ -1,6 +1,6 @@
 import { GiSoundWaves } from "react-icons/gi";
-import HeaderText from "../HeaderText";
-import SectionWrapper from "../SectionWrapper";
+import HeaderText from "../elements/HeaderText";
+import SectionWrapper from "../elements/SectionWrapper";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 
@@ -22,18 +22,17 @@ const NavBar = () => {
         <GiSoundWaves className="display-3 text-secondary" />
       </div>
       <div>
-        {navButtons.map((e) => (
-          <>
-            <Button
-              className="ms-4"
-              variant="text"
-              data-pageindex={1}
-              component={Link}
-              to={e.link}
-            >
-              {e.btnText}
-            </Button>
-          </>
+        {navButtons.map((e, index) => (
+          <Button
+            className="ms-4"
+            variant="text"
+            data-pageindex={1}
+            component={Link}
+            to={e.link}
+            key={e.btnText + index}
+          >
+            {e.btnText}
+          </Button>
         ))}
       </div>
     </SectionWrapper>

@@ -1,6 +1,6 @@
 type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
-type HeaderTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type TextTag = "span" | "p";
 
 type HeaderTextProps = {
   children: React.ReactNode;
@@ -9,22 +9,22 @@ type HeaderTextProps = {
   fontFamily?: "Carlito" | "Roboto, sans-serif" | "DM Sans, sans-serif";
   fontWeight?: FontWeight;
   letterSpacing?: number;
-  headerType?: HeaderTag;
+  textType?: TextTag;
 };
 
-const HeaderText: React.FC<HeaderTextProps> = ({
+const CustomText: React.FC<HeaderTextProps> = ({
   children,
   className = "",
-  fontSize = 45,
-  fontFamily = "Carlito",
+  fontSize = 18,
+  fontFamily = "Roboto, sans-serif",
   fontWeight = 400,
   letterSpacing = 1,
-  headerType = "h2",
+  textType = "span",
 }) => {
-  const Tag = headerType;
+  const Tag = textType;
   return (
     <Tag
-      className={`${className}`}
+      className={`m-0 ${className} `}
       style={{
         fontSize: fontSize,
         fontFamily: fontFamily,
@@ -37,4 +37,4 @@ const HeaderText: React.FC<HeaderTextProps> = ({
   );
 };
 
-export default HeaderText;
+export default CustomText;

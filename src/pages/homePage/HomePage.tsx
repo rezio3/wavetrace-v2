@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
-import HeaderText from "../../components/HeaderText";
-import SectionWrapper from "../../components/SectionWrapper";
+import HeaderText from "../../components/elements/HeaderText";
+import SectionWrapper from "../../components/elements/SectionWrapper";
 import Carousel from "../../components/homePage/Carousel";
 import RoadMap from "../../components/homePage/roadMap/RoadMap";
 
@@ -11,7 +11,7 @@ const HomePage = () => {
     <>
       <SectionWrapper centered height={800}>
         <HeaderText
-          className="w-50"
+          className="w-50 mb-2"
           headerType={"h1"}
           fontWeight={700}
           letterSpacing={5}
