@@ -11,7 +11,9 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`glass-container w-100 p-5 ${className}`}>{children}</div>
+    <div className={`glass-container w-100 p-3 p-lg-5 ${className}`}>
+      {children}
+    </div>
   );
 };
 

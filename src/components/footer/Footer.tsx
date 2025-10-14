@@ -4,13 +4,18 @@ import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import SectionWrapper from "../elements/SectionWrapper";
 import "./Footer.scss";
+import { useWindowSize } from "react-use";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
   return (
-    <SectionWrapper className="justify-content-between align-items-end mb-4 mt-5">
-      <span className="text-secondary">Wavetrace &copy; {currentYear}</span>
-      <div className="position-absolute b-0 socials-container">
+    <SectionWrapper className="justify-content-between flex-column-reverse flex-lg-row align-items-center align-items-lg-end mb-4 mt-5">
+      <span className="text-secondary" style={{ marginTop: isMobile ? 80 : 0 }}>
+        Wavetrace &copy; {currentYear}
+      </span>
+      <div className="position-absolute socials-container">
         {socialIcons.map((e, index) => (
           <Button
             variant="text"

@@ -2,3 +2,9 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+@media (max-width: 992px) {
+  .socials-container {
+    transform: translate(-50%, -140%);
+  }
+}
