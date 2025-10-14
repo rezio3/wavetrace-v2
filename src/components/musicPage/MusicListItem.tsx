@@ -12,12 +12,14 @@ type MusicListItemProps = {
   track: MusicItem;
   activeTrackId: string | null;
   setActiveTrackId: (id: string | null) => void;
+  isMobile: boolean;
 };
 
 const MusicListItem: React.FC<MusicListItemProps> = ({
   track,
   activeTrackId,
   setActiveTrackId,
+  isMobile,
 }) => {
   const [isOpenProceedDialog, setIsOpenProceedDialog] = useState(false);
   const [initialTabInProceedDialog, setInitialTabInProceedDialog] = useState(0);
@@ -34,36 +36,56 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
   useEffect(() => {
     if (activeTrackId !== track._id) handleStop();
   }, [activeTrackId]);
+
+  const trackTitleComponent = (
+    <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
+      {trackTitle}
+    </HeaderText>
+  );
+  const trackTypeComponent = (
+    <div className="track-type-container d-flex flex-column align-items-end gap-1">
+      {track.type.map((type, index) => (
+        <span
+          className="track-type-badge d-flex justify-content-center"
+          style={{ fontSize: 11, fontWeight: 400 }}
+          key={trackTitle + "-key-" + index}
+        >
+          {type}
+        </span>
+      ))}
+    </div>
+  );
+
   return (
     <li
-      className="glass-music-item d-flex align-items-center px-3 my-2"
-      style={{ height: 70 }}
+      className="glass-music-item d-flex flex-column flex-lg-row align-items-start align-items-lg-center px-3 my-2 py-3 py-lg-0"
+      style={{ height: isMobile ? "auto" : 70 }}
     >
-      <div className="d-flex align-items-center w-50">
+      {isMobile && (
+        <div className="d-flex align-items-center justify-content-between w-100">
+          {trackTitleComponent}
+          {trackTypeComponent}
+        </div>
+      )}
+
+      <div
+        className="d-flex align-items-center"
+        style={{ width: isMobile ? "100%" : "50%" }}
+      >
         <AudioPlayer
           src={track.audioUrl}
           preload="none"
-          className="bg-transparent w-50 text-secondary shadow-none px-2"
-          onPlay={() => setActiveTrackId(track._id)} // oznacz jako aktywny
+          className="bg-transparent text-secondary shadow-none px-2"
+          style={{ width: isMobile ? "100%" : "50%" }}
+          onPlay={() => setActiveTrackId(track._id)}
           ref={playerRef}
         />
+        {!isMobile && trackTitleComponent}
 
-        <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
-          {trackTitle}
-        </HeaderText>
-        <div className="track-type-container d-flex flex-column align-items-end gap-1">
-          {track.type.map((type, index) => (
-            <span
-              className="track-type-badge d-flex justify-content-center"
-              style={{ fontSize: 11, fontWeight: 400 }}
-              key={trackTitle + "-key-" + index}
-            >
-              {type}
-            </span>
-          ))}
-        </div>
+        {!isMobile && trackTypeComponent}
       </div>
-      <div className="description-container">
+
+      <div className="description-container mb-2 mb-lg-0">
         <MutedText fontSize={12}>{track.description}</MutedText>
       </div>
       <div className="d-flex ms-auto gap-2">

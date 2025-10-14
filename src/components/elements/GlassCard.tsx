@@ -13,6 +13,7 @@ type GlassCardProps = {
   transition?: boolean;
   isTextBold?: boolean;
   dispatch?: React.Dispatch<FilterAction>;
+  fontSize?: number;
 };
 
 const GlassCard: React.FC<GlassCardProps> = ({
@@ -24,12 +25,13 @@ const GlassCard: React.FC<GlassCardProps> = ({
   transition,
   isTextBold,
   dispatch,
+  fontSize = 18,
 }) => {
   const CardWrapper: React.ElementType = transition ? CardActionArea : "div";
 
   return (
     <div
-      className={`glass-card mx-2 mx-lg-0 position-relative d-flex flex-column justify-content-between ${
+      className={`glass-card position-relative d-flex flex-column justify-content-between ${
         transition && "glass-card-transition"
       } ${className}`}
       style={{ height: height, width: width }}
@@ -51,7 +53,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
           <HeaderText
             className="text-uppercase text-center"
             fontFamily="DM Sans, sans-serif"
-            fontSize={18}
+            fontSize={fontSize}
             fontWeight={isTextBold ? 700 : 400}
           >
             {header}

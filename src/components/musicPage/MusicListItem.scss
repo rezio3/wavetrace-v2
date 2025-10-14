@@ -28,3 +28,12 @@
     border-radius: 6px !important;
   }
 }
+
+@media (max-width: 992px) {
+  .track-type-container {
+    margin-left: 0;
+  }
+  .description-container {
+    max-width: 100%;
+  }
+}

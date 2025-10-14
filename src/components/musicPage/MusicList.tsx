@@ -8,6 +8,7 @@ type MusicListProps = {
   page: number;
   onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void;
   totalPages: number;
+  isMobile: boolean;
 };
 
 const MusicList: React.FC<MusicListProps> = ({
@@ -15,6 +16,7 @@ const MusicList: React.FC<MusicListProps> = ({
   page,
   onPageChange,
   totalPages,
+  isMobile,
 }) => {
   const [activeTrackId, setActiveTrackId] = useState<string | null>(null);
 
@@ -27,6 +29,7 @@ const MusicList: React.FC<MusicListProps> = ({
             activeTrackId={activeTrackId}
             setActiveTrackId={setActiveTrackId}
             key={track.title + index}
+            isMobile={isMobile}
           />
         ))}
       </ul>

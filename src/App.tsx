@@ -8,7 +8,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import MusicPage from "./pages/musicPage/MusicPage";
 import OrdersPage from "./pages/ordersPage/OrdersPage";
 import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
-import "./styles/global.scss";
 
 function App() {
   const darkTheme = createTheme({

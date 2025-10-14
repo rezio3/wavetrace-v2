@@ -12,7 +12,7 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = ({ filters, dispatch }) => {
   return (
-    <Toolbar className="ps-0 mt-2 w-full">
+    <Toolbar className="ps-0 mt-2 w-75">
       <Search>
         <SearchIconWrapper>
           <SearchIcon />

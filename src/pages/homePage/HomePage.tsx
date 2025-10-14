@@ -18,7 +18,7 @@ const HomePage = () => {
           className="mb-2"
           headerType={"h1"}
           fontWeight={700}
-          fontSize={isMobile ? 28 : 45}
+          fontSize={isMobile ? 36 : 45}
           letterSpacing={5}
           width={isMobile ? "100%" : "50%"}
         >

@@ -14,6 +14,7 @@ import { useEffect, useReducer, useState } from "react";
 import Notification from "../../components/elements/Notification";
 import { filtersReducer } from "../../components/musicPage/reducer";
 import FilterIndicator from "../../components/musicPage/FilterIndicator";
+import { useWindowSize } from "react-use";
 
 const MusicPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,16 +44,22 @@ const MusicPage = () => {
     setCurrentPage(1);
   }, [filters]);
 
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
+
   return (
     <>
       <SectionWrapper className="d-flex flex-column mt-5">
-        <div className="d-flex gap-3 flex-wrap justify-content-between">
+        <div className="d-flex gap-2 gap-lg-3 flex-wrap justify-content-center justify-content-lg-between">
           {MUSIC_FILTER_TYPES.map((type, index) => (
             <GlassCard
               header={type}
               transition
               key={"filter-box" + type + index}
               dispatch={dispatch}
+              width={isMobile ? 100 : 200}
+              height={isMobile ? 50 : 100}
+              fontSize={isMobile ? 11 : 18}
             />
           ))}
         </div>
@@ -81,6 +88,7 @@ const MusicPage = () => {
                 page={currentPage}
                 onPageChange={(_e, value: number) => setCurrentPage(value)}
                 totalPages={totalPages}
+                isMobile={isMobile}
               />
             )}
           </>
