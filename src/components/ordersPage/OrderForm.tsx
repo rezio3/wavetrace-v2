@@ -94,8 +94,8 @@ const OrderForm = () => {
           )}
         />
         <div className="w-50 d-flex flex-column gap-2">
-          {orderTips.map((e) => (
-            <div className="ps-4 d-flex align-items-center">
+          {orderTips.map((e, index) => (
+            <div className="ps-4 d-flex align-items-center" key={e.tip + index}>
               <CheckIcon color="primary" />
 
               <CustomText fontWeight={200} fontSize={14} className="ms-2">

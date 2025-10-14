@@ -1,7 +1,7 @@
 import { Pagination, Stack } from "@mui/material";
 import MusicListItem from "./MusicListItem";
 import type { MusicItem } from "./musicPageCommon";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type MusicListProps = {
   tracks: MusicItem[];
@@ -17,9 +17,7 @@ const MusicList: React.FC<MusicListProps> = ({
   totalPages,
 }) => {
   const [activeTrackId, setActiveTrackId] = useState<string | null>(null);
-  useEffect(() => {
-    console.log(activeTrackId);
-  }, [activeTrackId]);
+
   return (
     <>
       <ul className="list-unstyled p-0">

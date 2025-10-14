@@ -29,7 +29,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
 
   return (
     <div
-      className={`glass-card position-relative d-flex flex-column justify-content-between ${
+      className={`glass-card mx-2 mx-lg-0 position-relative d-flex flex-column justify-content-between ${
         transition && "glass-card-transition"
       } ${className}`}
       style={{ height: height, width: width }}
