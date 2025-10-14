@@ -46,7 +46,6 @@ const OrderForm = () => {
     type: "success",
     alert: "",
   });
-  console.log(mutation.isPending);
 
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3">
