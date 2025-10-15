@@ -11,31 +11,36 @@ import EditIcon from "@mui/icons-material/Edit";
 import { green } from "@mui/material/colors";
 import Box from "@mui/material/Box";
 import type { SxProps } from "@mui/system";
+import type { MusicItem } from "../musicPageCommon";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+
+import BuyPanel from "./BuyPanel";
+import { useWindowSize } from "react-use";
+import { handleCheckout, type BuyFormData } from "./proceedCommon";
 
 interface TabPanelProps {
   children?: React.ReactNode;
   dir?: string;
   index: number;
   value: number;
+  isMobile: boolean;
 }
 
 type ProceedWindowProps = {
   initialTab: number;
-  trackId: string;
+  track: MusicItem;
 };
 
-const ProceedWindow: React.FC<ProceedWindowProps> = ({
-  initialTab,
-  trackId,
-}) => {
-  return <FloatingActionButtonZoom initialTab={initialTab} trackId={trackId} />;
+const ProceedWindow: React.FC<ProceedWindowProps> = ({ initialTab, track }) => {
+  return <FloatingActionButtonZoom initialTab={initialTab} track={track} />;
 };
 
 export default ProceedWindow;
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
+  const tabPanelHeight = props.isMobile ? 400 : 330;
   return (
     <Typography
       component="div"
@@ -44,8 +49,20 @@ function TabPanel(props: TabPanelProps) {
       id={`action-tabpanel-${index}`}
       aria-labelledby={`action-tab-${index}`}
       {...other}
+      style={{ minHeight: tabPanelHeight }}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && (
+        <Box
+          sx={{
+            p: 3,
+            pb: 2,
+            minHeight: tabPanelHeight,
+            height: tabPanelHeight,
+          }}
+        >
+          {children}
+        </Box>
+      )}
     </Typography>
   );
 }
@@ -76,9 +93,13 @@ const fabGreenStyle = {
 
 const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
   initialTab,
+  track,
 }) => {
   const theme = useTheme();
   const [value, setValue] = React.useState(initialTab);
+
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
 
   const handleChange = (_event: unknown, newValue: number) => {
     setValue(newValue);
@@ -88,7 +109,32 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
+  const { control, handleSubmit, reset } = useForm<BuyFormData>({
+    defaultValues: { email: "" },
+  });
 
+  const mutation = useMutation({
+    mutationFn: handleCheckout,
+    onSuccess: () => {
+      // setNotification({
+      //   isOpen: true,
+      //   type: "success",
+      //   alert: "Your message has been sent successfully!",
+      // });
+      reset();
+    },
+    onError: (err: any) => {
+      // setNotification({
+      //   isOpen: true,
+      //   type: "error",
+      //   alert: "Something went wrong with message delivery.",
+      // });
+      console.log(err);
+    },
+  });
+  const onSubmit = (data: BuyFormData) => {
+    mutation.mutate({ id: track._id, email: data.email });
+  };
   const fabs = [
     {
       color: "primary" as "primary",
@@ -103,14 +149,13 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
       label: "Edit",
     },
   ];
-
   return (
     <Box
       sx={{
         bgcolor: "background.paper",
-        width: 500,
+        width: isMobile ? "100%" : 500,
         position: "relative",
-        minHeight: 200,
+        minHeight: isMobile ? 450 : 380,
       }}
     >
       <AppBar position="static" color="default">
@@ -126,10 +171,20 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
           <Tab label="Edit" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0} dir={theme.direction}>
-        Item One
+      <TabPanel
+        value={value}
+        index={0}
+        dir={theme.direction}
+        isMobile={isMobile}
+      >
+        <BuyPanel track={track} control={control} isMobile={isMobile} />
       </TabPanel>
-      <TabPanel value={value} index={1} dir={theme.direction}>
+      <TabPanel
+        value={value}
+        index={1}
+        dir={theme.direction}
+        isMobile={isMobile}
+      >
         Item Two
       </TabPanel>
       {fabs.map((fab, index) => (
@@ -144,7 +199,12 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
           }}
           unmountOnExit
         >
-          <Fab sx={fab.sx} aria-label={fab.label} color={fab.color}>
+          <Fab
+            sx={fab.sx}
+            aria-label={fab.label}
+            color={fab.color}
+            onClick={handleSubmit(onSubmit)}
+          >
             {fab.icon}
           </Fab>
         </Zoom>

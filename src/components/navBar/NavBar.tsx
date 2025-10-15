@@ -10,6 +10,7 @@ import MobileNav from "./MobileNav";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GroupsIcon from "@mui/icons-material/Groups";
+import { urlRouter } from "../../routes/urlRouter";
 
 const NavBar = () => {
   const { width } = useWindowSize();
@@ -31,7 +32,10 @@ const NavBar = () => {
   return (
     <SectionWrapper className="mt-4 justify-content-between align-items-center">
       <div className="d-flex align-items-center">
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+        <Link
+          to={urlRouter.homePage}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
           <HeaderText
             headerType="h1"
             letterSpacing={5}
@@ -75,7 +79,11 @@ const NavBar = () => {
 export default NavBar;
 
 export const navButtons = [
-  { btnText: "Music", link: "/music", icon: <LibraryMusicIcon /> },
-  { btnText: "Orders", link: "/orders", icon: <DescriptionIcon /> },
-  { btnText: "Collaboration", link: "/collaboration", icon: <GroupsIcon /> },
+  { btnText: "Music", link: urlRouter.musicPage, icon: <LibraryMusicIcon /> },
+  { btnText: "Orders", link: urlRouter.ordersPage, icon: <DescriptionIcon /> },
+  {
+    btnText: "Collaboration",
+    link: urlRouter.collaborationPage,
+    icon: <GroupsIcon />,
+  },
 ];

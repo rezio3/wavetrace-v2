@@ -7,6 +7,7 @@ import "./MusicListItem.scss";
 import MutedText from "../elements/MutedText";
 import { useEffect, useRef, useState } from "react";
 import DialogProceedWindow from "./proceedWindow/DialogProceedWindow";
+import MusicTypeBadge from "./MusicTypeBadge";
 
 type MusicListItemProps = {
   track: MusicItem;
@@ -23,9 +24,10 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
 }) => {
   const [isOpenProceedDialog, setIsOpenProceedDialog] = useState(false);
   const [initialTabInProceedDialog, setInitialTabInProceedDialog] = useState(0);
+
   const trackTitle =
-    track.title.length > 35
-      ? track.title.slice(0, 32).trimEnd() + "..."
+    track.title.length > 28
+      ? track.title.slice(0, 25).trimEnd() + "..."
       : track.title;
 
   const playerRef = useRef<AudioPlayerRef>(null);
@@ -38,22 +40,16 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
   }, [activeTrackId]);
 
   const trackTitleComponent = (
-    <HeaderText headerType="h6" fontSize={18} className="ms-2 music-title">
+    <HeaderText headerType="h6" fontSize={16} className="ms-2 music-title">
       {trackTitle}
+      <MutedText fontSize={12} className="ms-2 ms-lg-0 artist-span">
+        by {track.artist}
+      </MutedText>
     </HeaderText>
   );
+
   const trackTypeComponent = (
-    <div className="track-type-container d-flex flex-column align-items-end gap-1">
-      {track.type.map((type, index) => (
-        <span
-          className="track-type-badge d-flex justify-content-center"
-          style={{ fontSize: 11, fontWeight: 400 }}
-          key={trackTitle + "-key-" + index}
-        >
-          {type}
-        </span>
-      ))}
-    </div>
+    <MusicTypeBadge track={track} className="ms-0 ms-lg-auto align-items-end" />
   );
 
   return (
@@ -115,7 +111,7 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
         isOpen={isOpenProceedDialog}
         setIsOpen={setIsOpenProceedDialog}
         initialTab={initialTabInProceedDialog}
-        trackId={track._id}
+        track={track}
       />
     </li>
   );

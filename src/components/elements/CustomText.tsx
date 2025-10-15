@@ -10,6 +10,7 @@ type HeaderTextProps = {
   fontWeight?: FontWeight;
   letterSpacing?: number;
   textType?: TextTag;
+  style?: React.CSSProperties;
 };
 
 const CustomText: React.FC<HeaderTextProps> = ({
@@ -20,6 +21,7 @@ const CustomText: React.FC<HeaderTextProps> = ({
   fontWeight = 400,
   letterSpacing = 1,
   textType = "span",
+  style = {},
 }) => {
   const Tag = textType;
   return (
@@ -30,6 +32,7 @@ const CustomText: React.FC<HeaderTextProps> = ({
         fontFamily: fontFamily,
         fontWeight: fontWeight,
         letterSpacing: letterSpacing,
+        ...style,
       }}
     >
       {children}
