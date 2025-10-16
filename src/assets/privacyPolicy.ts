@@ -1,4 +1,6 @@
-export const privacyPolicy: PrivacyPolicy[] = [
+import type { TermsAndPolicy } from "./types";
+
+export const privacyPolicy: TermsAndPolicy[] = [
   {
     header: "1. Who We Are",
     content: ` Wavetrace is an online store that sells original music tracks and
@@ -94,15 +96,3 @@ export const privacyPolicy: PrivacyPolicy[] = [
     Any updates will be posted on this page with an updated “Effective date”.`,
   },
 ];
-
-export type PrivacyPolicy = {
-  header: string;
-  content: string;
-  list?: PrivacyPolicyInnerList[];
-  content2?: string;
-};
-
-type PrivacyPolicyInnerList = {
-  innerListHeader?: string;
-  innerListItem: string[];
-};

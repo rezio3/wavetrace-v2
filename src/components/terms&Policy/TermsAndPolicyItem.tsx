@@ -1,14 +1,15 @@
-import type { PrivacyPolicy } from "../../pages/privacyPolicy/privacyPolicy";
+import React from "react";
+import type { TermsAndPolicy } from "../../assets/types";
 import CustomText from "../elements/CustomText";
 import HeaderText from "../elements/HeaderText";
 
-const PrivacyPolicyItem: React.FC<PrivacyPolicy> = ({
+const TermsAndPolicyItem: React.FC<TermsAndPolicy> = ({
   header,
   content,
+  isListNumerable,
   list,
   content2,
 }) => {
-  console.log(header);
   return (
     <div className="mb-5">
       <HeaderText
@@ -24,23 +25,23 @@ const PrivacyPolicyItem: React.FC<PrivacyPolicy> = ({
         {content}
       </CustomText>
       {list &&
-        list.map((list) => (
-          <>
+        list.map((list, index) => (
+          <React.Fragment key={"list item" + header + index}>
             {list.innerListHeader && (
               <CustomText textType="span" fontSize={16} fontWeight={400}>
                 {list.innerListHeader}
               </CustomText>
             )}
-            <ul>
-              {list.innerListItem.map((innerListItemText) => (
-                <li>
+            <ul className={isListNumerable ? `list-unstyled ms-3` : ""}>
+              {list.innerListItem.map((innerListItemText, index) => (
+                <li className={innerListItemText + index}>
                   <CustomText textType="span" fontSize={16} fontWeight={200}>
-                    {innerListItemText}
+                    {isListNumerable && index + 1 + ". "} {innerListItemText}
                   </CustomText>
                 </li>
               ))}
             </ul>
-          </>
+          </React.Fragment>
         ))}
       {content2 && (
         <CustomText
@@ -56,4 +57,4 @@ const PrivacyPolicyItem: React.FC<PrivacyPolicy> = ({
   );
 };
 
-export default PrivacyPolicyItem;
+export default TermsAndPolicyItem;

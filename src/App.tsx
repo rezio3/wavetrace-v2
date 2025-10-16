@@ -7,7 +7,7 @@ import Footer from "./components/footer/Footer";
 import {
   HashRouter,
   Route,
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
 import MusicPage from "./pages/musicPage/MusicPage";
@@ -15,6 +15,7 @@ import OrdersPage from "./pages/ordersPage/OrdersPage";
 import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
 import PrivacyPolicyPage from "./pages/privacyPolicy/PrivacyPolicyPage";
 import ScrollToTop from "./assets/ScrollToTop";
+import TermsOfServicePage from "./pages/termsOfService/TermsOfServicePage";
 
 function App() {
   const darkTheme = createTheme({
@@ -27,6 +28,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         {/* <Router basename="/wavetrace-v2"> */}
+        {/* ^^^^^^^^^ Keep it for production ^^^^^^^^^^^ */}
         <HashRouter>
           <ScrollToTop />
           <VideoBG />
@@ -38,6 +40,10 @@ function App() {
               <Route path="/orders" element={<OrdersPage />} />
               <Route path="/collaboration" element={<CollaborationPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route
+                path="/terms-of-service"
+                element={<TermsOfServicePage />}
+              />
             </Routes>
             <Footer />
           </div>

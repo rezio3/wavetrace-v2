@@ -4,4 +4,5 @@ export const urlRouter = {
   ordersPage: "/orders",
   collaborationPage: "/collaboration",
   privacyPolicy: "/privacy-policy",
+  termsOfService: "/terms-of-service",
 };
