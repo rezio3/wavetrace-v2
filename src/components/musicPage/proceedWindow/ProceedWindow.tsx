@@ -40,7 +40,6 @@ export default ProceedWindow;
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-  const tabPanelHeight = props.isMobile ? 400 : 330;
   return (
     <Typography
       component="div"
@@ -49,15 +48,15 @@ function TabPanel(props: TabPanelProps) {
       id={`action-tabpanel-${index}`}
       aria-labelledby={`action-tab-${index}`}
       {...other}
-      style={{ minHeight: tabPanelHeight }}
+      style={{ minHeight: "auto" }}
     >
       {value === index && (
         <Box
           sx={{
             p: 3,
             pb: 2,
-            minHeight: tabPanelHeight,
-            height: tabPanelHeight,
+            minHeight: "auto",
+            height: "auto",
           }}
         >
           {children}
@@ -110,7 +109,7 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     exit: theme.transitions.duration.leavingScreen,
   };
   const { control, handleSubmit, reset } = useForm<BuyFormData>({
-    defaultValues: { email: "" },
+    defaultValues: { email: "", isAcceptedTermsAndPolicy: false },
   });
 
   const mutation = useMutation({
@@ -155,7 +154,8 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
         bgcolor: "background.paper",
         width: isMobile ? "100%" : 500,
         position: "relative",
-        minHeight: isMobile ? 450 : 380,
+        minHeight: "auto",
+        transition: "1s",
       }}
     >
       <AppBar position="static" color="default">

@@ -28,4 +28,5 @@ export const handleCheckout = async ({
 
 export type BuyFormData = {
   email: string;
+  isAcceptedTermsAndPolicy: boolean;
 };

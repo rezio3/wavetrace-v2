@@ -2,7 +2,7 @@ import type { MusicItem } from "./musicPageCommon";
 import { AudioPlayer, type AudioPlayerRef } from "react-audio-play";
 import HeaderText from "../elements/HeaderText";
 import PriceText from "../elements/PriceText";
-import { Button } from "@mui/material";
+import { Button, Tooltip, tooltipClasses } from "@mui/material";
 import "./MusicListItem.scss";
 import MutedText from "../elements/MutedText";
 import { useEffect, useRef, useState } from "react";
@@ -31,7 +31,7 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
       : track.title;
 
   const playerRef = useRef<AudioPlayerRef>(null);
-  // const isPlaying = activeTrackId === track._id;
+
   const handleStop = () => {
     playerRef.current?.stop();
   };
@@ -40,12 +40,29 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
   }, [activeTrackId]);
 
   const trackTitleComponent = (
-    <HeaderText headerType="h6" fontSize={16} className="ms-2 music-title">
-      {trackTitle}
-      <MutedText fontSize={12} className="ms-2 ms-lg-0 artist-span">
-        by {track.artist}
-      </MutedText>
-    </HeaderText>
+    <Tooltip
+      title={track.title}
+      placement="top"
+      disableInteractive
+      disableHoverListener={trackTitle === track.title} // show tooltip only when title is not entirely visible
+      slotProps={{
+        popper: {
+          sx: {
+            [`&.${tooltipClasses.popper}[data-popper-placement*="top"] .${tooltipClasses.tooltip}`]:
+              {
+                marginBottom: "0px",
+              },
+          },
+        },
+      }}
+    >
+      <HeaderText headerType="h6" fontSize={16} className="ms-2 music-title">
+        {trackTitle}
+        <MutedText fontSize={12} className="ms-2 ms-lg-0 artist-span">
+          by {track.artist}
+        </MutedText>
+      </HeaderText>
+    </Tooltip>
   );
 
   const trackTypeComponent = (
