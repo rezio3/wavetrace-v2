@@ -14,14 +14,14 @@ const RoadMap = () => {
   return (
     <SectionWrapper centered>
       <HeaderText
-        className="d-flex justify-content-center w-100 mb-5 text-uppercase"
+        className="d-flex justify-content-center w-100 mb-1 mb-lg-5 text-uppercase text-center"
         fontSize={32}
         letterSpacing={5}
         fontWeight={700}
       >
         How does it work?
       </HeaderText>
-      <div className="d-flex w-100 justify-content-between flex-wrap mt-5 mb-5">
+      <div className="d-flex w-100 justify-content-center justify-content-md-between flex-wrap mt-5 mb-5">
         {stepBoxes.map((e, index) => {
           return (
             <StepBox
@@ -41,7 +41,7 @@ const RoadMap = () => {
       >
         Features
       </HeaderText>
-      <div className="d-flex w-100 justify-content-between flex-wrap  mb-5">
+      <div className="d-flex w-100 justify-content-center justify-content-lg-between flex-wrap  mb-5">
         {features.map((e) => {
           return (
             <div className="mt-1 position-relative" key={e.header}>

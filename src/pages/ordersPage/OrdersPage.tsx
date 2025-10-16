@@ -13,7 +13,7 @@ const OrdersPage = () => {
           fontFamily="Carlito"
           fontWeight={700}
           letterSpacing={3}
-          className="mt-5"
+          className="mt-5 text-center"
         >
           Order your custom track
         </HeaderText>
@@ -23,7 +23,7 @@ const OrdersPage = () => {
           fontFamily={"Roboto, sans-serif"}
           className="text-center"
         >
-          Describe the style of music your project requires.
+          Describe the style of music your project requires
         </CustomText>
         <CustomText
           fontWeight={100}
@@ -31,7 +31,7 @@ const OrdersPage = () => {
           fontFamily={"Roboto, sans-serif"}
           className="text-center mb-5"
         >
-          We’ll get back to you as soon as possible with a personalized offer.
+          We’ll get back to you as soon as possible with a personalized offer
         </CustomText>
       </SectionWrapper>
 

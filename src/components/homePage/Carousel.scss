@@ -37,13 +37,8 @@
   }
 }
 
-@media (max-width: 1700px) {
-  .landing-container {
-    margin-top: 100px;
-  }
-}
-@media (max-width: 1400px) {
-  .landing-container {
-    margin-top: 50px;
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 100%;
   }
 }

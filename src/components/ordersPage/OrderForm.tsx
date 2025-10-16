@@ -9,6 +9,7 @@ import { useState } from "react";
 import Notification from "../elements/Notification";
 import CheckIcon from "@mui/icons-material/Check";
 import CustomText from "../elements/CustomText";
+import { useWindowSize } from "react-use";
 
 const OrderForm = () => {
   const { control, handleSubmit, reset } = useForm<OrderFormData>({
@@ -47,6 +48,29 @@ const OrderForm = () => {
     alert: "",
   });
 
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
+
+  const orderTipsComponent = (
+    <div
+      className="d-flex flex-column gap-2"
+      style={{ width: isMobile ? "100%" : "50%" }}
+    >
+      {orderTips.map((e, index) => (
+        <div
+          className="ps-0 ps-lg-4 d-flex align-items-start align-items-lg-center"
+          key={e.tip + index}
+        >
+          <CheckIcon color="primary" />
+
+          <CustomText fontWeight={200} fontSize={14} className="ms-2">
+            {e.tip}
+          </CustomText>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3">
       <HeaderText fontSize={24} headerType="h4" fontFamily="Roboto, sans-serif">
@@ -62,7 +86,7 @@ const OrderForm = () => {
             id="outlined-basic"
             label="Your email"
             variant="outlined"
-            className="w-50"
+            style={{ width: isMobile ? "100%" : "50%" }}
             error={!!fieldState.error}
             helperText={fieldState.error?.message}
           />
@@ -87,25 +111,15 @@ const OrderForm = () => {
               variant="outlined"
               multiline
               rows={8}
-              className="w-50"
+              style={{ width: isMobile ? "100%" : "50%" }}
               error={!!fieldState.error}
               helperText={fieldState.error?.message}
             />
           )}
         />
-        <div className="w-50 d-flex flex-column gap-2">
-          {orderTips.map((e) => (
-            <div className="ps-4 d-flex align-items-center">
-              <CheckIcon color="primary" />
-
-              <CustomText fontWeight={200} fontSize={14} className="ms-2">
-                {e.tip}
-              </CustomText>
-            </div>
-          ))}
-        </div>
+        {!isMobile && orderTipsComponent}
       </div>
-
+      {isMobile && orderTipsComponent}
       <Button
         variant="contained"
         className="py-2"

@@ -8,6 +8,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import MusicPage from "./pages/musicPage/MusicPage";
 import OrdersPage from "./pages/ordersPage/OrdersPage";
 import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
+import PrivacyPolicyPage from "./pages/privacyPolicy/PrivacyPolicyPage";
+import ScrollToTop from "./assets/ScrollToTop";
 
 function App() {
   const darkTheme = createTheme({
@@ -20,6 +22,7 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Router basename="/wavetrace-v2">
+          <ScrollToTop />
           <VideoBG />
           <div className="app-container">
             <NavBar />
@@ -28,6 +31,7 @@ function App() {
               <Route path="/music" element={<MusicPage />} />
               <Route path="/orders" element={<OrdersPage />} />
               <Route path="/collaboration" element={<CollaborationPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             </Routes>
             <Footer />
           </div>

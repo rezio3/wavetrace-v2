@@ -9,6 +9,7 @@ import {
 } from "./collaborationFormCommon";
 import Notification from "../elements/Notification";
 import { useMutation } from "@tanstack/react-query";
+import { useWindowSize } from "react-use";
 
 const CollaborationForm = () => {
   const { control, handleSubmit, reset } = useForm<CollaborationFormData>({
@@ -47,6 +48,9 @@ const CollaborationForm = () => {
     alert: "",
   });
 
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
+
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3 mt-5">
       <HeaderText fontSize={24} headerType="h4" fontFamily="Roboto, sans-serif">
@@ -62,7 +66,7 @@ const CollaborationForm = () => {
             id="outlined-basic"
             label="Full name"
             variant="outlined"
-            className="w-50"
+            style={{ width: isMobile ? "100%" : "50%" }}
             error={!!fieldState.error}
             helperText={fieldState.error?.message}
           />
@@ -78,7 +82,7 @@ const CollaborationForm = () => {
             id="outlined-basic"
             label="Your email"
             variant="outlined"
-            className="w-50"
+            style={{ width: isMobile ? "100%" : "50%" }}
             error={!!fieldState.error}
             helperText={fieldState.error?.message}
           />
@@ -96,7 +100,7 @@ const CollaborationForm = () => {
             variant="outlined"
             multiline
             rows={5}
-            className="w-50"
+            style={{ width: isMobile ? "100%" : "50%" }}
           />
         )}
       />
@@ -110,7 +114,7 @@ const CollaborationForm = () => {
             id="outlined-basic"
             label="Portfolio (e.g. Soundcloud, YouTube)"
             variant="outlined"
-            className="w-50"
+            style={{ width: isMobile ? "100%" : "50%" }}
             error={!!fieldState.error}
             helperText={fieldState.error?.message}
           />

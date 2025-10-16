@@ -3,3 +3,10 @@
   max-width: 1300px;
   width: 80%;
 }
+
+@media (max-width: 992px) {
+  .page-wrapper {
+    width: 100%;
+    padding: 0 20px;
+  }
+}

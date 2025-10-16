@@ -33,3 +33,20 @@
 .feature-icon {
   font-size: 40px !important;
 }
+
+@media (max-width: 992px) {
+  .road-map-card {
+    margin-top: 50px;
+    width: 260px;
+    max-width: 260px;
+    min-width: 260px;
+    margin: 50px 10px 0px;
+  }
+  .step-number-header {
+    top: -2px;
+    left: 10px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #90caf9;
+  }
+}

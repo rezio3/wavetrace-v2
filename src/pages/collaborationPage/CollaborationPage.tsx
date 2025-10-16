@@ -1,4 +1,4 @@
-import CollaborationForm from "../../components/collaborationPage/collaborationForm";
+import CollaborationForm from "../../components/collaborationPage/CollaborationForm";
 import CustomText from "../../components/elements/CustomText";
 import HeaderText from "../../components/elements/HeaderText";
 import SectionWrapper from "../../components/elements/SectionWrapper";
@@ -27,8 +27,8 @@ const CollaborationPage = () => {
         >
           Requirements
         </CustomText>
-        {collabRequirements.map((e) => (
-          <div>
+        {collabRequirements.map((e, index) => (
+          <div key={e.text + index}>
             <CheckIcon color="primary" />
             <CustomText
               fontWeight={200}

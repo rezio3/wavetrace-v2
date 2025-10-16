@@ -1,12 +1,13 @@
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import ProceedWindow from "./ProceedWindow";
+import type { MusicItem } from "../musicPageCommon";
 
 type DialogProceedDialogProps = {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
   initialTab: number;
-  trackId: string;
+  track: MusicItem;
 };
 
 const DialogProceedWindow = (props: DialogProceedDialogProps) => {
@@ -31,7 +32,7 @@ const DialogProceedWindow = (props: DialogProceedDialogProps) => {
           },
         }}
       >
-        <ProceedWindow initialTab={props.initialTab} trackId={props.trackId} />
+        <ProceedWindow initialTab={props.initialTab} track={props.track} />
       </Dialog>
     </React.Fragment>
   );

@@ -10,6 +10,7 @@ type HeaderTextProps = {
   fontWeight?: FontWeight;
   letterSpacing?: number;
   headerType?: HeaderTag;
+  width?: string;
 };
 
 const HeaderText: React.FC<HeaderTextProps> = ({
@@ -20,6 +21,7 @@ const HeaderText: React.FC<HeaderTextProps> = ({
   fontWeight = 400,
   letterSpacing = 1,
   headerType = "h2",
+  width = "auto",
 }) => {
   const Tag = headerType;
   return (
@@ -30,6 +32,7 @@ const HeaderText: React.FC<HeaderTextProps> = ({
         fontFamily: fontFamily,
         fontWeight: fontWeight,
         letterSpacing: letterSpacing,
+        width: width,
       }}
     >
       {children}
