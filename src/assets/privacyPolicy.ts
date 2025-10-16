@@ -90,9 +90,4 @@ export const privacyPolicy: TermsAndPolicy[] = [
     content2:
       "To exercise any of these rights, please contact us at: wavetrace.music@gmail.com",
   },
-  {
-    header: "8. Changes to This Policy",
-    content: `We may update this Privacy Policy from time to time. 
-    Any updates will be posted on this page with an updated “Effective date”.`,
-  },
 ];
