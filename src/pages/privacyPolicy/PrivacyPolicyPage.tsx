@@ -11,7 +11,7 @@ const PrivacyPolicyPage = () => {
         letterSpacing={3}
         headerType="h4"
         fontWeight={700}
-        className="my-4"
+        className="mt-3 mb-5"
       >
         Privacy policy
       </HeaderText>

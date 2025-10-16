@@ -4,7 +4,12 @@ import VideoBG from "./layouts/VideoBG";
 import HomePage from "./pages/homePage/HomePage";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  HashRouter,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import MusicPage from "./pages/musicPage/MusicPage";
 import OrdersPage from "./pages/ordersPage/OrdersPage";
 import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
@@ -21,7 +26,8 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <Router basename="/wavetrace-v2">
+        {/* <Router basename="/wavetrace-v2"> */}
+        <HashRouter>
           <ScrollToTop />
           <VideoBG />
           <div className="app-container">
@@ -35,7 +41,8 @@ function App() {
             </Routes>
             <Footer />
           </div>
-        </Router>
+        </HashRouter>
+        {/* </Router> */}
       </ThemeProvider>
     </>
   );
