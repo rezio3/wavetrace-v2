@@ -1,13 +1,13 @@
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import HeaderText from "../../components/elements/HeaderText";
 import SectionWrapper from "../../components/elements/SectionWrapper";
 import Carousel from "../../components/homePage/Carousel";
 import RoadMap from "../../components/homePage/roadMap/RoadMap";
 import { useWindowSize } from "react-use";
+import { Link } from "react-router-dom";
+import { urlRouter } from "../../routes/urlRouter";
 
 const HomePage = () => {
-  const handleGetStartedBtn = () => {};
-
   const { width } = useWindowSize();
   const isMobile = width < 992;
 
@@ -28,10 +28,10 @@ const HomePage = () => {
         <Button
           variant="contained"
           className="mt-3"
-          name="learn-more"
-          onClick={handleGetStartedBtn}
+          component={Link}
+          to={urlRouter.musicPage}
         >
-          Learn more
+          Browse music
         </Button>
         <Carousel />
       </SectionWrapper>

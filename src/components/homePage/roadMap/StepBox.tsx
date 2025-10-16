@@ -1,13 +1,22 @@
 import { Button, CardActions, CardContent } from "@mui/material";
 import HeaderText from "../../elements/HeaderText";
+import { Link } from "react-router-dom";
 
 type StepBoxProps = {
   number: string;
   header: string;
   txt: string;
+  btnTxt: string;
+  link: string;
 };
 
-const StepBox: React.FC<StepBoxProps> = ({ number, header, txt }) => {
+const StepBox: React.FC<StepBoxProps> = ({
+  number,
+  header,
+  txt,
+  btnTxt,
+  link,
+}) => {
   return (
     <div className="mt-3 position-relative">
       <h3 className="position-absolute step-number-header">{number}</h3>
@@ -24,7 +33,9 @@ const StepBox: React.FC<StepBoxProps> = ({ number, header, txt }) => {
           <p className="step-txt">{txt}</p>
         </CardContent>
         <CardActions className="step-box-buttons">
-          <Button size="small">Learn More</Button>
+          <Button size="small" component={Link} to={link}>
+            {btnTxt}
+          </Button>
         </CardActions>
       </div>
     </div>

@@ -9,6 +9,7 @@ import StraightenIcon from "@mui/icons-material/Straighten";
 import FormatIndentIncreaseIcon from "@mui/icons-material/FormatIndentIncrease";
 import EditIcon from "@mui/icons-material/Edit";
 import GlassCard from "../../elements/GlassCard";
+import { urlRouter } from "../../../routes/urlRouter";
 
 const RoadMap = () => {
   return (
@@ -22,15 +23,8 @@ const RoadMap = () => {
         How does it work?
       </HeaderText>
       <div className="d-flex w-100 justify-content-center justify-content-md-between flex-wrap mt-5 mb-5">
-        {stepBoxes.map((e, index) => {
-          return (
-            <StepBox
-              number={e.number}
-              header={e.header}
-              txt={e.txt}
-              key={e.header + index}
-            />
-          );
+        {stepBoxes.map((stepBox, index) => {
+          return <StepBox {...stepBox} key={stepBox.header + index} />;
         })}
       </div>
       <HeaderText
@@ -68,26 +62,36 @@ const stepBoxes = [
     number: "01",
     header: "Explore",
     txt: "Find the music that best suits your needs.",
+    btnTxt: "Browse",
+    link: urlRouter.musicPage,
   },
   {
     number: "02",
     header: "Buy or edit",
     txt: "Purchase a track or request edits to make it fit your project even better.",
+    btnTxt: "Learn more",
+    link: urlRouter.termsOfService,
   },
   {
     number: "03",
     header: "Offer",
     txt: "We’ll get in touch with you with an offer to edit the track you selected.",
+    btnTxt: "Learn more",
+    link: urlRouter.termsOfService,
   },
   {
     number: "04",
     header: "Unique",
     txt: "If you need a unique soundtrack, you can order a custom composition made specifically for your project.",
+    btnTxt: "Order",
+    link: urlRouter.ordersPage,
   },
   {
     number: "05",
     header: "Stay in touch",
     txt: "Collaborate with our artists to create your dream projects together.",
+    btnTxt: "Contact",
+    link: urlRouter.support,
   },
 ];
 
