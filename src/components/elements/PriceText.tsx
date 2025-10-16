@@ -1,4 +1,4 @@
-import HeaderText from "./HeaderText";
+import CustomText from "./CustomText";
 
 type PriceTextProps = {
   children: React.ReactNode;
@@ -12,15 +12,15 @@ const PriceText: React.FC<PriceTextProps> = ({
   fontSize = 18,
 }) => {
   return (
-    <HeaderText
+    <CustomText
       fontSize={fontSize}
       fontWeight={700}
-      headerType="h6"
+      textType="span"
       fontFamily="Roboto, sans-serif"
-      className={`d-flex align-items-center me-1 ${className}`}
+      className={`d-flex align-items-center text-nowrap ${className}`}
     >
       $ {!Number.isInteger(children) ? children : `${children}.00`}
-    </HeaderText>
+    </CustomText>
   );
 };
 

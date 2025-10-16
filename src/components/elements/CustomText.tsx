@@ -26,7 +26,7 @@ const CustomText: React.FC<HeaderTextProps> = ({
   const Tag = textType;
   return (
     <Tag
-      className={`m-0 ${className} `}
+      className={`${className} `}
       style={{
         fontSize: fontSize,
         fontFamily: fontFamily,
