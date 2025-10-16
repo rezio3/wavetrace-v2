@@ -5,4 +5,5 @@ export const urlRouter = {
   collaborationPage: "/collaboration",
   privacyPolicy: "/privacy-policy",
   termsOfService: "/terms-of-service",
+  support: "/support",
 };

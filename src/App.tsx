@@ -16,6 +16,8 @@ import CollaborationPage from "./pages/collaborationPage/CollaborationPage";
 import PrivacyPolicyPage from "./pages/privacyPolicy/PrivacyPolicyPage";
 import ScrollToTop from "./assets/ScrollToTop";
 import TermsOfServicePage from "./pages/termsOfService/TermsOfServicePage";
+import SupportPage from "./pages/supportPage/SupportPage";
+import { urlRouter } from "./routes/urlRouter";
 
 function App() {
   const darkTheme = createTheme({
@@ -35,15 +37,22 @@ function App() {
           <div className="app-container">
             <NavBar />
             <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/music" element={<MusicPage />} />
-              <Route path="/orders" element={<OrdersPage />} />
-              <Route path="/collaboration" element={<CollaborationPage />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path={urlRouter.homePage} element={<HomePage />} />
+              <Route path={urlRouter.musicPage} element={<MusicPage />} />
+              <Route path={urlRouter.ordersPage} element={<OrdersPage />} />
               <Route
-                path="/terms-of-service"
+                path={urlRouter.collaborationPage}
+                element={<CollaborationPage />}
+              />
+              <Route
+                path={urlRouter.privacyPolicy}
+                element={<PrivacyPolicyPage />}
+              />
+              <Route
+                path={urlRouter.termsOfService}
                 element={<TermsOfServicePage />}
               />
+              <Route path={urlRouter.support} element={<SupportPage />} />
             </Routes>
             <Footer />
           </div>
