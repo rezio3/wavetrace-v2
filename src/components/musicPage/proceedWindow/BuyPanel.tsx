@@ -10,10 +10,11 @@ import PriceText from "../../elements/PriceText";
 import { Link } from "react-router-dom";
 import { urlRouter } from "../../../routes/urlRouter";
 import { red } from "@mui/material/colors";
+import type { BuyFormData } from "./proceedCommon";
 
 type BuyPanelProps = {
   track: MusicItem;
-  control: Control<any>;
+  control: Control<BuyFormData>;
   isMobile: boolean;
 };
 
