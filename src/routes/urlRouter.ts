@@ -1,6 +1,7 @@
 export const urlRouter = {
+  homePage: "/",
   musicPage: "/music",
   ordersPage: "/orders",
   collaborationPage: "/collaboration",
-  homePage: "/",
+  privacyPolicy: "/privacy-policy",
 };

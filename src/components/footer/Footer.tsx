@@ -5,6 +5,8 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import SectionWrapper from "../elements/SectionWrapper";
 import "./Footer.scss";
 import { useWindowSize } from "react-use";
+import { urlRouter } from "../../routes/urlRouter";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -33,6 +35,8 @@ const Footer = () => {
             data-pageindex={1}
             onClick={() => {}}
             key={e.linkText + index}
+            component={Link}
+            to={e.link}
           >
             {e.linkText}
           </Button>
@@ -50,8 +54,9 @@ const socialIcons = [
   { icon: <YouTubeIcon />, link: "" },
 ];
 
-const footerLinks = [
-  { linkText: "Pricing", link: "" },
+export const footerLinks = [
   { linkText: "FAQ", link: "" },
   { linkText: "Support", link: "" },
+  { linkText: "Terms of service", link: "" },
+  { linkText: "Privacy policy", link: urlRouter.privacyPolicy },
 ];

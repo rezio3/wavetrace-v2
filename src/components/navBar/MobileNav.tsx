@@ -9,6 +9,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { navButtons } from "./NavBar";
 import { Link } from "react-router-dom";
+import { footerLinks } from "../footer/Footer";
 
 type MobileNavProps = {
   isOpen: boolean;
@@ -34,13 +35,13 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, toggleDrawer }) => {
       </List>
       <Divider />
       <List>
-        {["Pricing", "FAQ", "Support"].map((text, index) => (
-          <ListItem key={text + index} disablePadding>
+        {footerLinks.map((footerLink, index) => (
+          <ListItem key={footerLink.linkText + index} disablePadding>
             <ListItemButton>
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
-              <ListItemText primary={text} />
+              <ListItemText primary={footerLink.linkText} />
             </ListItemButton>
           </ListItem>
         ))}
