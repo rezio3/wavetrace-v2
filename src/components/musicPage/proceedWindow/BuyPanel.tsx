@@ -66,6 +66,7 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
                 control={
                   <Checkbox
                     {...field}
+                    checked={field.value}
                     sx={{
                       color: !!fieldState.error ? red[800] : undefined,
                     }}

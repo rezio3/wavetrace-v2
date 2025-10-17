@@ -10,3 +10,5 @@ type TermsAndPolicyInnerList = {
   innerListHeader?: string;
   innerListItem: string[];
 };
+
+export type Nil = undefined | null;

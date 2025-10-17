@@ -112,7 +112,7 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     exit: theme.transitions.duration.leavingScreen,
   };
   const { control, handleSubmit, reset } = useForm<BuyOrEditFormData>({
-    defaultValues: { email: "", isAcceptedTermsAndPolicy: false },
+    defaultValues: { email: "", isAcceptedTermsAndPolicy: false, message: "" },
   });
 
   const [notification, setNotification] = React.useState<{
@@ -128,6 +128,14 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
   const mutation = useMutation({
     mutationFn: handleCheckout,
     onSuccess: () => {
+      if (value === 1) {
+        setNotification({
+          isOpen: true,
+          type: "success",
+          alert:
+            "Your message has been sent successfully! Our team will contact you shortly.",
+        });
+      }
       reset();
     },
     onError: (err: any) => {
@@ -140,7 +148,12 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     },
   });
   const onSubmit = (data: BuyOrEditFormData) => {
-    mutation.mutate({ id: track._id, email: data.email });
+    mutation.mutate({
+      track: track,
+      email: data.email,
+      buyOrEdit: value === 0 ? "buy" : "edit",
+      editDescription: data.message,
+    });
   };
   const fabs = [
     {
@@ -160,7 +173,15 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     {
       color: "secondary" as const,
       sx: fabStyle as SxProps,
-      icon: <EditIcon />,
+      icon: (
+        <>
+          {mutation.isPending ? (
+            <CircularProgress size="30px" className="" />
+          ) : (
+            <EditIcon />
+          )}
+        </>
+      ),
       label: "Edit",
     },
   ];

@@ -55,7 +55,7 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
             <TextField
               {...field}
               id="outlined-basic"
-              label={"What would you like to change"}
+              label={"What would you like to change?"}
               variant="outlined"
               multiline
               rows={3}
@@ -77,6 +77,7 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
                 control={
                   <Checkbox
                     {...field}
+                    checked={field.value}
                     sx={{
                       color: !!fieldState.error ? red[800] : undefined,
                     }}
@@ -134,7 +135,7 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
           />
           <CustomText
             fontSize={22}
-            className={"price-and-edit-in-proceed-window pe-0 pe-lg-2"}
+            className={"price-and-edit-in-proceed-window pe-0 pe-lg-1"}
           >
             Edit
           </CustomText>
