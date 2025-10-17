@@ -4,20 +4,25 @@ import SectionWrapper from "../../components/elements/SectionWrapper";
 import TermsAndPolicyItem from "../../components/terms&Policy/TermsAndPolicyItem";
 import { termsOfService } from "../../assets/termsOfService";
 import CustomText from "../../components/elements/CustomText";
+import { useWindowSize } from "react-use";
 
 const TermsOfServicePage = () => {
+  const { width } = useWindowSize();
+  const isMobile = width < 992;
   return (
     <SectionWrapper className="d-flex flex-column align-items-center mt-5">
       <HeaderText
         letterSpacing={3}
         headerType="h4"
+        fontSize={40}
         fontWeight={700}
         className="mt-3 mb-3"
       >
         Terms of Service
       </HeaderText>
       <CustomText
-        className="text-secondary w-50 text-center mb-4"
+        className="text-secondary text-center mb-4"
+        style={{ width: isMobile ? "100%" : "50%" }}
         fontSize={16}
       >
         Welcome to Wavetrace. By accessing or using our website and services,
