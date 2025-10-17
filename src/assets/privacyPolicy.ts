@@ -87,7 +87,6 @@ export const privacyPolicy: TermsAndPolicy[] = [
         ],
       },
     ],
-    content2:
-      "To exercise any of these rights, please contact us at: wavetrace.music@gmail.com",
+    content2: "To exercise any of these rights, please contact our support.",
   },
 ];
