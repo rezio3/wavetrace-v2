@@ -55,8 +55,8 @@ const socialIcons = [
 ];
 
 export const footerLinks = [
-  { linkText: "FAQ", link: "" },
   { linkText: "Support", link: urlRouter.support },
+  { linkText: "FAQ", link: "" },
   { linkText: "Terms of service", link: urlRouter.termsOfService },
   { linkText: "Privacy policy", link: urlRouter.privacyPolicy },
 ];

@@ -2,22 +2,37 @@ import { Button, TextField } from "@mui/material";
 import GlassContainer from "../elements/GlassContainer";
 import HeaderText from "../elements/HeaderText";
 import { Controller, useForm } from "react-hook-form";
-import { sendOrderRequest } from "./orderFormCommon";
-import type { OrderFormData } from "./orderFormCommon";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import React, { useState } from "react";
 import Notification from "../elements/Notification";
 import CheckIcon from "@mui/icons-material/Check";
 import CustomText from "../elements/CustomText";
 import { useWindowSize } from "react-use";
+import {
+  orderTips,
+  sendMessage,
+  type ContactFormData,
+} from "./contactFormCommon";
 
-const OrderForm = () => {
-  const { control, handleSubmit, reset } = useForm<OrderFormData>({
+type ContactFormProps = {
+  formHeader: string;
+  messageLabel?: string;
+  buttonLabel: string;
+  isOrderFormTips?: boolean;
+};
+
+const ContactForm: React.FC<ContactFormProps> = ({
+  formHeader,
+  messageLabel = "Message...",
+  buttonLabel,
+  isOrderFormTips,
+}) => {
+  const { control, handleSubmit, reset } = useForm<ContactFormData>({
     defaultValues: { email: "", message: "" },
   });
 
   const mutation = useMutation({
-    mutationFn: sendOrderRequest,
+    mutationFn: sendMessage,
     onSuccess: () => {
       setNotification({
         isOpen: true,
@@ -36,7 +51,7 @@ const OrderForm = () => {
     },
   });
 
-  const onSubmit = (data: OrderFormData) => mutation.mutate(data);
+  const onSubmit = (data: ContactFormData) => mutation.mutate(data);
 
   const [notification, setNotification] = useState<{
     isOpen: boolean;
@@ -74,7 +89,7 @@ const OrderForm = () => {
   return (
     <GlassContainer className="d-flex flex-column align-items-start gap-3">
       <HeaderText fontSize={24} headerType="h4" fontFamily="Roboto, sans-serif">
-        Place an order
+        {formHeader}
       </HeaderText>
       <Controller
         name="email"
@@ -107,7 +122,7 @@ const OrderForm = () => {
             <TextField
               {...field}
               id="outlined-basic"
-              label="Tell us what you need…"
+              label={messageLabel}
               variant="outlined"
               multiline
               rows={8}
@@ -117,16 +132,16 @@ const OrderForm = () => {
             />
           )}
         />
-        {!isMobile && orderTipsComponent}
+        {!isMobile && isOrderFormTips && orderTipsComponent}
       </div>
-      {isMobile && orderTipsComponent}
+      {isMobile && isOrderFormTips && orderTipsComponent}
       <Button
         variant="contained"
         className="py-2"
         onClick={handleSubmit(onSubmit)}
         loading={mutation.isPending}
       >
-        Send request
+        {buttonLabel}
       </Button>
       <Notification
         type={notification.type}
@@ -138,18 +153,4 @@ const OrderForm = () => {
   );
 };
 
-export default OrderForm;
-
-const orderTips = [
-  { tip: "Describe the exact type of music you need." },
-  { tip: "Specify the theme or purpose of your project that requires music." },
-  {
-    tip: "You can outline specific time intervals where certain sounds or instruments should play (e.g., in a film or stage performance).",
-  },
-  {
-    tip: "Attach examples or inspirations as links (e.g., YouTube or SoundCloud) if you have any.",
-  },
-  {
-    tip: "The more details you provide, the better we can match your expectations.",
-  },
-];
+export default ContactForm;

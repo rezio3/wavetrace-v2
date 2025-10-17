@@ -1,7 +1,7 @@
 import SectionWrapper from "../../components/elements/SectionWrapper";
-import OrderForm from "../../components/ordersPage/OrderForm";
 import HeaderText from "../../components/elements/HeaderText";
 import CustomText from "../../components/elements/CustomText";
+import ContactForm from "../../components/contactForm/ContactForm";
 
 const OrdersPage = () => {
   return (
@@ -36,7 +36,12 @@ const OrdersPage = () => {
       </SectionWrapper>
 
       <SectionWrapper className="align-items-start">
-        <OrderForm />
+        <ContactForm
+          formHeader={"Place an order"}
+          messageLabel={"Tell us what you need..."}
+          buttonLabel={"Send request"}
+          isOrderFormTips={true}
+        />
       </SectionWrapper>
     </>
   );

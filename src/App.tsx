@@ -29,7 +29,7 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        {/* <Router basename="/wavetrace-v2"> */}
+        {/* <Router basename="/"> */}
         {/* ^^^^^^^^^ Keep it for production ^^^^^^^^^^^ */}
         <HashRouter>
           <ScrollToTop />

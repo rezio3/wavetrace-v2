@@ -24,11 +24,11 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, toggleDrawer }) => {
       onKeyDown={toggleDrawer(true)}
     >
       <List>
-        {navButtons.map((e, index) => (
-          <ListItem key={e.btnText + index} disablePadding>
-            <ListItemButton component={Link} to={e.link}>
-              <ListItemIcon>{e.icon}</ListItemIcon>
-              <ListItemText primary={e.btnText} />
+        {navButtons.map((navButton, index) => (
+          <ListItem key={navButton.btnText + index} disablePadding>
+            <ListItemButton component={Link} to={navButton.link}>
+              <ListItemIcon>{navButton.icon}</ListItemIcon>
+              <ListItemText primary={navButton.btnText} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -37,7 +37,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, toggleDrawer }) => {
       <List>
         {footerLinks.map((footerLink, index) => (
           <ListItem key={footerLink.linkText + index} disablePadding>
-            <ListItemButton>
+            <ListItemButton component={Link} to={footerLink.link}>
               {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon> */}
