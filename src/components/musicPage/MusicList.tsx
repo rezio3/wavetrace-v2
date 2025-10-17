@@ -2,6 +2,7 @@ import { Pagination, Stack } from "@mui/material";
 import MusicListItem from "./MusicListItem";
 import type { MusicItem } from "./musicPageCommon";
 import { useState } from "react";
+import CustomText from "../elements/CustomText";
 
 type MusicListProps = {
   tracks: MusicItem[];
@@ -33,7 +34,12 @@ const MusicList: React.FC<MusicListProps> = ({
           />
         ))}
       </ul>
-      <div className="d-flex justify-content-center">
+      <div className="d-flex flex-column align-items-center">
+        {tracks.length === 0 && (
+          <CustomText fontSize={30} className="text-secondary mb-5 text-center">
+            Nothing matched your search
+          </CustomText>
+        )}
         <Stack spacing={2}>
           <Pagination
             count={totalPages}

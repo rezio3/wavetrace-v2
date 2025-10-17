@@ -11,6 +11,7 @@ const PrivacyPolicyPage = () => {
         letterSpacing={3}
         headerType="h4"
         fontWeight={700}
+        fontSize={40}
         className="mt-3 mb-5"
       >
         Privacy policy

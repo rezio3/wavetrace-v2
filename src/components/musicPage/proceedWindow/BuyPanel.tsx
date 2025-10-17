@@ -101,7 +101,10 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
           <Controller
             name="email"
             control={control}
-            rules={{ required: true }}
+            rules={{
+              required: true,
+              validate: (value) => validateEmail(value),
+            }}
             render={({ field, fieldState }) => (
               <TextField
                 {...field}
