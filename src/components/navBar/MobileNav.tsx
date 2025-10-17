@@ -18,34 +18,35 @@ type MobileNavProps = {
 const MobileNav: React.FC<MobileNavProps> = ({ isOpen, toggleDrawer }) => {
   const list = () => (
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 250, height: "100%" }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(true)}
     >
-      <List>
-        {navButtons.map((navButton, index) => (
-          <ListItem key={navButton.btnText + index} disablePadding>
-            <ListItemButton component={Link} to={navButton.link}>
-              <ListItemIcon>{navButton.icon}</ListItemIcon>
-              <ListItemText primary={navButton.btnText} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {footerLinks.map((footerLink, index) => (
-          <ListItem key={footerLink.linkText + index} disablePadding>
-            <ListItemButton component={Link} to={footerLink.link}>
-              {/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-              <ListItemText primary={footerLink.linkText} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <div className="d-flex flex-column h-100">
+        <List>
+          {navButtons.map((navButton, index) => (
+            <ListItem key={navButton.btnText + index} disablePadding>
+              <ListItemButton component={Link} to={navButton.link}>
+                <ListItemIcon>{navButton.icon}</ListItemIcon>
+                <ListItemText primary={navButton.btnText} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider sx={{ opacity: 1 }} />
+        <Divider className="mt-auto" sx={{ opacity: 1 }} />
+        <List>
+          {footerLinks.map((footerLink, index) => (
+            <ListItem key={footerLink.linkText + index} disablePadding>
+              <ListItemButton component={Link} to={footerLink.link}>
+                <ListItemIcon>{footerLink.icon}</ListItemIcon>
+                <ListItemText primary={footerLink.linkText} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </div>
     </Box>
   );
   return (

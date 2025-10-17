@@ -7,6 +7,10 @@ import "./Footer.scss";
 import { useWindowSize } from "react-use";
 import { urlRouter } from "../../routes/urlRouter";
 import { Link } from "react-router-dom";
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import InfoIcon from "@mui/icons-material/Info";
+import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -28,7 +32,7 @@ const Footer = () => {
           </Button>
         ))}
       </div>
-      <div>
+      <div className="d-flex flex-column flex-lg-row">
         {footerLinks.map((e, index) => (
           <Button
             variant="text"
@@ -55,8 +59,20 @@ const socialIcons = [
 ];
 
 export const footerLinks = [
-  { linkText: "Support", link: urlRouter.support },
-  { linkText: "FAQ", link: "" },
-  { linkText: "Terms of service", link: urlRouter.termsOfService },
-  { linkText: "Privacy policy", link: urlRouter.privacyPolicy },
+  {
+    linkText: "Support",
+    link: urlRouter.support,
+    icon: <QuestionAnswerIcon />,
+  },
+  { linkText: "FAQ", link: "", icon: <QuestionMarkIcon /> },
+  {
+    linkText: "Terms of service",
+    link: urlRouter.termsOfService,
+    icon: <InfoIcon />,
+  },
+  {
+    linkText: "Privacy policy",
+    link: urlRouter.privacyPolicy,
+    icon: <LocalPoliceIcon />,
+  },
 ];
