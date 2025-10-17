@@ -10,6 +10,7 @@ const VideoBG = () => {
           autoPlay
           muted
           loop
+          playsInline
           id="myVideo"
           className="w-100 z-0 video"
         ></video>
