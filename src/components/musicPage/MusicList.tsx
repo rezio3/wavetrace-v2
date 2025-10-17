@@ -36,7 +36,7 @@ const MusicList: React.FC<MusicListProps> = ({
       </ul>
       <div className="d-flex flex-column align-items-center">
         {tracks.length === 0 && (
-          <CustomText fontSize={35} className="text-secondary mb-5">
+          <CustomText fontSize={30} className="text-secondary mb-5 text-center">
             Nothing matched your search
           </CustomText>
         )}
