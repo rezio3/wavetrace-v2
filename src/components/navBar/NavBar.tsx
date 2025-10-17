@@ -30,7 +30,10 @@ const NavBar = () => {
       setIsOpenMobileNav(open);
     };
   return (
-    <SectionWrapper className="mt-4 justify-content-between align-items-center">
+    <SectionWrapper
+      className="mt-4 justify-content-between align-items-center"
+      style={{ maxHeight: 60 }}
+    >
       <div className="d-flex align-items-center">
         <Link
           to={urlRouter.homePage}

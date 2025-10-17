@@ -4,6 +4,7 @@ type SectionWrapperProps = {
   className?: string;
   centered?: boolean;
   height?: number;
+  style?: {};
 };
 
 const SectionWrapper: React.FC<SectionWrapperProps> = ({
@@ -11,6 +12,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
   className = "",
   centered = "",
   height,
+  style,
 }) => {
   return (
     <div
@@ -18,7 +20,7 @@ const SectionWrapper: React.FC<SectionWrapperProps> = ({
         centered &&
         "d-flex flex-column align-items-start justify-content-center"
       }`}
-      style={{ height: height || "auto" }}
+      style={{ height: height || "auto", ...style }}
     >
       {children}
     </div>
