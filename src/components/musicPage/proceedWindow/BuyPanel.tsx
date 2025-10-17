@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { urlRouter } from "../../../routes/urlRouter";
 import { red } from "@mui/material/colors";
 import type { BuyFormData } from "./proceedCommon";
+import { validateEmail } from "../../../assets/validation";
 
 type BuyPanelProps = {
   track: MusicItem;
@@ -100,7 +101,10 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
           <Controller
             name="email"
             control={control}
-            rules={{ required: true }}
+            rules={{
+              required: true,
+              validate: (value) => validateEmail(value),
+            }}
             render={({ field, fieldState }) => (
               <TextField
                 {...field}

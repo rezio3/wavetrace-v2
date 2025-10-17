@@ -14,10 +14,12 @@ import type { SxProps } from "@mui/system";
 import type { MusicItem } from "../musicPageCommon";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import BuyPanel from "./BuyPanel";
 import { useWindowSize } from "react-use";
 import { handleCheckout, type BuyFormData } from "./proceedCommon";
+import Notification from "../../elements/Notification";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -112,22 +114,27 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     defaultValues: { email: "", isAcceptedTermsAndPolicy: false },
   });
 
+  const [notification, setNotification] = React.useState<{
+    isOpen: boolean;
+    type: "error" | "success";
+    alert: string;
+  }>({
+    isOpen: false,
+    type: "success",
+    alert: "",
+  });
+
   const mutation = useMutation({
     mutationFn: handleCheckout,
     onSuccess: () => {
-      // setNotification({
-      //   isOpen: true,
-      //   type: "success",
-      //   alert: "Your message has been sent successfully!",
-      // });
       reset();
     },
     onError: (err: any) => {
-      // setNotification({
-      //   isOpen: true,
-      //   type: "error",
-      //   alert: "Something went wrong with message delivery.",
-      // });
+      setNotification({
+        isOpen: true,
+        type: "error",
+        alert: "Something went wrong. Please try again later.",
+      });
       console.log(err);
     },
   });
@@ -138,7 +145,15 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     {
       color: "primary" as "primary",
       sx: fabGreenStyle as SxProps,
-      icon: <ShoppingCartIcon />,
+      icon: (
+        <>
+          {mutation.isPending ? (
+            <CircularProgress size="30px" className="" />
+          ) : (
+            <ShoppingCartIcon />
+          )}
+        </>
+      ),
       label: "Shop",
     },
     {
@@ -209,6 +224,12 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
           </Fab>
         </Zoom>
       ))}
+      <Notification
+        type={notification.type}
+        alert={notification.alert}
+        open={notification.isOpen}
+        setOpen={() => setNotification({ ...notification, isOpen: false })}
+      />
     </Box>
   );
 };
