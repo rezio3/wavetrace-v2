@@ -6,7 +6,6 @@ import MusicTypeBadge from "../MusicTypeBadge";
 import CustomText from "../../elements/CustomText";
 import { Controller, type Control } from "react-hook-form";
 import { Checkbox, FormControlLabel, TextField } from "@mui/material";
-import PriceText from "../../elements/PriceText";
 import { Link } from "react-router-dom";
 import { urlRouter } from "../../../routes/urlRouter";
 import { red } from "@mui/material/colors";
@@ -19,7 +18,7 @@ type BuyPanelProps = {
   isMobile: boolean;
 };
 
-const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
+const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="mb-3">
@@ -39,23 +38,35 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
           className="bg-transparent text-secondary shadow-none px-2"
           style={{ width: "100%" }}
         />
-        <CustomText fontSize={12} fontWeight={300} className="pb-1">
-          {track.description}
-        </CustomText>
       </div>
 
       <div className="w-100">
-        <div
-          className="mb-2"
-          style={{ borderBottom: "1px solid rgba(78, 78, 78, 0.484)" }}
+        <Controller
+          name="message"
+          control={control}
+          rules={{
+            required: "Please tell us what you need",
+            minLength: {
+              value: 1,
+              message: "Message should be at least 10 characters",
+            },
+          }}
+          render={({ field, fieldState }) => (
+            <TextField
+              {...field}
+              id="outlined-basic"
+              label={"What would you like to change"}
+              variant="outlined"
+              multiline
+              rows={3}
+              className="w-100"
+              error={!!fieldState.error}
+              size="small"
+            />
+          )}
         />
-        <MutedText
-          fontSize={12}
-          className="mt-1"
-          style={{ width: isMobile ? "100%" : "50%" }}
-        >
-          After payment, you’ll get a download link by email.
-        </MutedText>
+        <div className="mb-2" />
+
         <Controller
           name="isAcceptedTermsAndPolicy"
           control={control}
@@ -121,17 +132,16 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
               />
             )}
           />
-
-          <PriceText
+          <CustomText
             fontSize={22}
-            className={"price-and-edit-in-proceed-window"}
+            className={"price-and-edit-in-proceed-window pe-0 pe-lg-2"}
           >
-            {track.price}
-          </PriceText>
+            Edit
+          </CustomText>
         </div>
       </div>
     </div>
   );
 };
 
-export default BuyPanel;
+export default EditPanel;

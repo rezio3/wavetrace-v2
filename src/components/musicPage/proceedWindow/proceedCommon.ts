@@ -26,7 +26,8 @@ export const handleCheckout = async ({
   return data;
 };
 
-export type BuyFormData = {
+export type BuyOrEditFormData = {
   email: string;
   isAcceptedTermsAndPolicy: boolean;
+  message?: string;
 };

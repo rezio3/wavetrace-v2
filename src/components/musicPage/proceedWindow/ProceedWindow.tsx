@@ -18,8 +18,9 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import BuyPanel from "./BuyPanel";
 import { useWindowSize } from "react-use";
-import { handleCheckout, type BuyFormData } from "./proceedCommon";
+import { handleCheckout, type BuyOrEditFormData } from "./proceedCommon";
 import Notification from "../../elements/Notification";
+import EditPanel from "./EditPanel";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -110,7 +111,7 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
     enter: theme.transitions.duration.enteringScreen,
     exit: theme.transitions.duration.leavingScreen,
   };
-  const { control, handleSubmit, reset } = useForm<BuyFormData>({
+  const { control, handleSubmit, reset } = useForm<BuyOrEditFormData>({
     defaultValues: { email: "", isAcceptedTermsAndPolicy: false },
   });
 
@@ -138,7 +139,7 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
       console.log(err);
     },
   });
-  const onSubmit = (data: BuyFormData) => {
+  const onSubmit = (data: BuyOrEditFormData) => {
     mutation.mutate({ id: track._id, email: data.email });
   };
   const fabs = [
@@ -200,7 +201,7 @@ const FloatingActionButtonZoom: React.FC<ProceedWindowProps> = ({
         dir={theme.direction}
         isMobile={isMobile}
       >
-        Item Two
+        <EditPanel track={track} control={control} isMobile={isMobile} />
       </TabPanel>
       {fabs.map((fab, index) => (
         <Zoom
