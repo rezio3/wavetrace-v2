@@ -49,7 +49,10 @@ const NavBar = () => {
             Wavetrace
           </HeaderText>
         </Link>
-        <GiSoundWaves className="display-3 text-secondary" />
+        <GiSoundWaves
+          className="display-3 text-secondary"
+          // style={{ color: "008AD4" }}
+        />
       </div>
       <div>
         {isMobile ? (
