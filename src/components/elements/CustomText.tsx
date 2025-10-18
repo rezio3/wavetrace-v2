@@ -28,7 +28,6 @@ const CustomText: React.FC<HeaderTextProps> = ({
 }) => {
   const Tag = textType;
   let content: React.ReactNode;
-  console.log(children);
   if (
     Array.isArray(children) &&
     children.every(

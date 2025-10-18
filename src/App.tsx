@@ -5,9 +5,9 @@ import HomePage from "./pages/homePage/HomePage";
 import NavBar from "./components/navBar/NavBar";
 import Footer from "./components/footer/Footer";
 import {
-  HashRouter,
+  // HashRouter,
   Route,
-  // BrowserRouter as Router,
+  BrowserRouter as Router,
   Routes,
 } from "react-router-dom";
 import MusicPage from "./pages/musicPage/MusicPage";
@@ -18,6 +18,8 @@ import ScrollToTop from "./assets/ScrollToTop";
 import TermsOfServicePage from "./pages/termsOfService/TermsOfServicePage";
 import SupportPage from "./pages/supportPage/SupportPage";
 import { urlRouter } from "./routes/urlRouter";
+import SuccessView from "./components/successAndCancelView/SuccessView";
+import CancelView from "./components/successAndCancelView/CancelView";
 
 function App() {
   const darkTheme = createTheme({
@@ -29,9 +31,9 @@ function App() {
     <>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        {/* <Router basename="/"> */}
+        <Router>
         {/* ^^^^^^^^^ Keep it for production ^^^^^^^^^^^ */}
-        <HashRouter>
+        {/* <HashRouter> */}
           <ScrollToTop />
           <VideoBG />
           <div className="app-container">
@@ -53,11 +55,13 @@ function App() {
                 element={<TermsOfServicePage />}
               />
               <Route path={urlRouter.support} element={<SupportPage />} />
+               <Route path={urlRouter.success} element={<SuccessView />} />
+               <Route path={urlRouter.cancel} element={<CancelView />} />
             </Routes>
             <Footer />
           </div>
-        </HashRouter>
-        {/* </Router> */}
+        {/* </HashRouter> */}
+        </Router>
       </ThemeProvider>
     </>
   );

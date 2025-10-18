@@ -6,4 +6,6 @@ export const urlRouter = {
   privacyPolicy: "/privacy-policy",
   termsOfService: "/terms-of-service",
   support: "/support",
+  success: "/success",
+  cancel: "/cancel"
 };
