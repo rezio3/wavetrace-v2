@@ -78,7 +78,12 @@ const ContactForm: React.FC<ContactFormProps> = ({
         >
           <CheckIcon color="primary" />
 
-          <CustomText fontWeight={200} fontSize={14} className="ms-2">
+          <CustomText
+            fontWeight={200}
+            fontSize={14}
+            className="ms-2"
+            isInnerHtml
+          >
             {e.tip}
           </CustomText>
         </div>

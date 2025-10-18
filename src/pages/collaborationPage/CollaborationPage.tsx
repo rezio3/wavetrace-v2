@@ -35,6 +35,7 @@ const CollaborationPage = () => {
               fontSize={14}
               fontFamily={"Roboto, sans-serif"}
               className="text-center ms-2"
+              isInnerHtml
             >
               {e.text}
             </CustomText>
@@ -49,9 +50,13 @@ const CollaborationPage = () => {
 export default CollaborationPage;
 
 const collabRequirements = [
-  { text: "Having high-quality tracks ready for sale" },
+  {
+    text: `Having <strong class="strong-200">high-quality music</strong> ready for sale`,
+  },
   { text: "Access to track projects for possible editing" },
-  { text: "Honesty and commitment when fulfilling music orders" },
+  {
+    text: `Honesty and commitment when fulfilling <strong class="strong-200">music orders</strong>`,
+  },
   {
     text: "Ability to use at least one DAW (Pro Tools, Cubase, Logic Pro, Ableton, FL Studio, etc.)",
   },

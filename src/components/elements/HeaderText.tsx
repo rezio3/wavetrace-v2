@@ -13,6 +13,7 @@ type HeaderTextProps = {
   letterSpacing?: number;
   headerType?: HeaderTag;
   width?: string;
+  isInnerHtml?: boolean;
 };
 
 const HeaderText = React.forwardRef<HTMLHeadingElement, HeaderTextProps>(
@@ -26,26 +27,47 @@ const HeaderText = React.forwardRef<HTMLHeadingElement, HeaderTextProps>(
       letterSpacing = 1,
       headerType = "h2",
       width = "auto",
+      // vvvvvv make this prop true if the text coming from the external object/variable
+      isInnerHtml,
       ...tooltipRest
     },
     ref
   ) => {
     const Tag = headerType;
     return (
-      <Tag
-        ref={ref}
-        className={`m-0 ${className}`}
-        style={{
-          fontSize,
-          fontFamily,
-          fontWeight,
-          letterSpacing,
-          width,
-        }}
-        {...tooltipRest}
-      >
-        {children}
-      </Tag>
+      <>
+        {isInnerHtml ? (
+          <Tag
+            ref={ref}
+            className={`m-0 ${className}`}
+            style={{
+              fontSize,
+              fontFamily,
+              fontWeight,
+              letterSpacing,
+              width,
+            }}
+            dangerouslySetInnerHTML={{ __html: children || "" }}
+            {...tooltipRest}
+          />
+        ) : (
+          <Tag
+            ref={ref}
+            className={`m-0 ${className}`}
+            style={{
+              fontSize,
+              fontFamily,
+              fontWeight,
+              letterSpacing,
+              width,
+            }}
+            {...tooltipRest}
+          >
+            {" "}
+            {children}
+          </Tag>
+        )}
+      </>
     );
   }
 );

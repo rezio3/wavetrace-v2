@@ -18,10 +18,17 @@ const TermsAndPolicyItem: React.FC<TermsAndPolicy> = ({
         fontFamily="Roboto, sans-serif"
         fontWeight={400}
         className="mb-3"
+        isInnerHtml
       >
         {header}
       </HeaderText>
-      <CustomText textType="p" fontWeight={200} fontSize={16} className="mb-2">
+      <CustomText
+        textType="p"
+        fontWeight={200}
+        fontSize={16}
+        className="mb-2"
+        isInnerHtml
+      >
         {content}
       </CustomText>
       {list &&
@@ -35,8 +42,14 @@ const TermsAndPolicyItem: React.FC<TermsAndPolicy> = ({
             <ul className={isListNumerable ? `list-unstyled ms-3` : ""}>
               {list.innerListItem.map((innerListItemText, index) => (
                 <li className={innerListItemText + index}>
-                  <CustomText textType="span" fontSize={16} fontWeight={200}>
-                    {isListNumerable && index + 1 + ". "} {innerListItemText}
+                  <CustomText
+                    textType="span"
+                    fontSize={16}
+                    fontWeight={200}
+                    isInnerHtml
+                  >
+                    {isListNumerable && index + 1 + ". "}
+                    {innerListItemText}
                   </CustomText>
                 </li>
               ))}

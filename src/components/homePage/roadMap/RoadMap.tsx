@@ -61,7 +61,7 @@ const stepBoxes = [
   {
     number: "01",
     header: "Explore",
-    txt: "Find the music that best suits your needs.",
+    txt: `<strong class="strong-400">Find the music</strong> that best suits your needs.`,
     btnTxt: "Browse",
     link: urlRouter.musicPage,
   },
@@ -82,14 +82,14 @@ const stepBoxes = [
   {
     number: "04",
     header: "Unique",
-    txt: "If you need a unique soundtrack, you can order a custom composition made specifically for your project.",
+    txt: `If you need a <strong class="strong-400">unique soundtrack</strong>, you can order a <strong class="strong-400">custom composition</strong> made specifically for your project.`,
     btnTxt: "Order",
     link: urlRouter.ordersPage,
   },
   {
     number: "05",
     header: "Stay in touch",
-    txt: "Collaborate with our artists to create your dream projects together.",
+    txt: `Collaborate with our <strong class="strong-400">artists</strong> to create your dream projects together.`,
     btnTxt: "Contact",
     link: urlRouter.support,
   },
@@ -97,19 +97,19 @@ const stepBoxes = [
 
 const features = [
   {
-    header: "Fast music editing",
+    header: "<strong>Fast music editing</strong>",
     icon: <AccessTimeIcon className="feature-icon" />,
   },
   {
-    header: "Affordable music customization",
+    header: "Affordable <strong>music customization</strong>",
     icon: <CurrencyExchangeIcon className="feature-icon" />,
   },
   {
-    header: "Wide range of orchestral instruments",
+    header: "Wide range of <strong>orchestral instruments</strong>",
     icon: <QueueMusicIcon className="feature-icon" />,
   },
   {
-    header: "Synthesizers and electronic music",
+    header: "Synthesizers and <strong>electronic music</strong>",
     icon: <StraightenIcon className="feature-icon" />,
   },
   {

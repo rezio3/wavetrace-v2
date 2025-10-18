@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import XIcon from "@mui/icons-material/X";
-import YouTubeIcon from "@mui/icons-material/YouTube";
+// import InstagramIcon from "@mui/icons-material/Instagram";
+// import XIcon from "@mui/icons-material/X";
+// import YouTubeIcon from "@mui/icons-material/YouTube";
 import SectionWrapper from "../elements/SectionWrapper";
 import "./Footer.scss";
 import { useWindowSize } from "react-use";
@@ -11,6 +11,7 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import InfoIcon from "@mui/icons-material/Info";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
+import MutedText from "../elements/MutedText";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,10 +19,20 @@ const Footer = () => {
   const isMobile = width < 992;
   return (
     <SectionWrapper className="justify-content-between flex-column-reverse flex-lg-row align-items-center align-items-lg-end mb-4 mt-5">
-      <span className="text-secondary" style={{ marginTop: isMobile ? 80 : 0 }}>
-        Wavetrace &copy; {currentYear}
-      </span>
-      <div className="position-absolute socials-container">
+      <div className={`d-flex flex-column ${isMobile && "align-items-center"}`}>
+        <MutedText
+          fontSize={16}
+          className="text-secondary"
+          style={{ marginTop: isMobile ? 30 : 0 }}
+        >
+          Wavetrace &copy; {currentYear}
+        </MutedText>
+        <MutedText>
+          Operated by <strong>Jakub Rezler Frontend Services</strong>
+          <br />
+          NIP: 6922521331 | REGON: 38372056500000
+        </MutedText>
+        {/* <div className="position-absolute socials-container">
         {socialIcons.map((e, index) => (
           <Button
             variant="text"
@@ -31,6 +42,7 @@ const Footer = () => {
             {e.icon}
           </Button>
         ))}
+      </div> */}
       </div>
       <div className="d-flex flex-column flex-lg-row">
         {footerLinks.map((e, index) => (
@@ -52,11 +64,11 @@ const Footer = () => {
 
 export default Footer;
 
-const socialIcons = [
-  { icon: <InstagramIcon />, link: "" },
-  { icon: <XIcon />, link: "" },
-  { icon: <YouTubeIcon />, link: "" },
-];
+// const socialIcons = [
+//   { icon: <InstagramIcon />, link: "" },
+//   { icon: <XIcon />, link: "" },
+//   { icon: <YouTubeIcon />, link: "" },
+// ];
 
 export const footerLinks = [
   {

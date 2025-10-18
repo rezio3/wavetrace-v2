@@ -31,7 +31,7 @@ const HomePage = () => {
           component={Link}
           to={urlRouter.musicPage}
         >
-          Browse music
+          <strong className="strong-400">Browse music</strong>
         </Button>
         <Carousel />
       </SectionWrapper>

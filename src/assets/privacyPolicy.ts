@@ -3,11 +3,11 @@ import type { TermsAndPolicy } from "./types";
 export const privacyPolicy: TermsAndPolicy[] = [
   {
     header: "1. Who We Are",
-    content: ` Wavetrace is an online store that sells original music tracks and
-        soundtracks created by independent composers. We also offer custom music
+    content: ` Wavetrace is an online store that sells <strong class="strong-400">original music</strong> tracks and
+        <strong class="strong-400">soundtracks</strong> created by independent <strong class="strong-400">composers</strong>. We also offer custom music
         composition services and accept collaboration submissions from
         composers. All personal data collected through this website is
-        controlled by Wavetrace (referred to as “we”, “our”, or “us” throughout
+        controlled by <strong class="strong-400">Wavetrace</strong> (referred to as “we”, “our”, or “us” throughout
         this document).`,
   },
   {
@@ -49,7 +49,7 @@ export const privacyPolicy: TermsAndPolicy[] = [
         innerListItem: [
           "Process and deliver your purchased music",
           "Send download links and order confirmations via email",
-          "Communicate regarding custom music orders",
+          `Communicate regarding custom <strong class="strong-400">music orders</strong>`,
           "Review and respond to collaboration submissions",
         ],
       },
@@ -59,11 +59,11 @@ export const privacyPolicy: TermsAndPolicy[] = [
   },
   {
     header: "4. Payment Processing",
-    content: `All payments on Wavetrace are securely processed by Stripe. 
+    content: `All payments on <strong class="strong-400">Wavetrace</strong> are securely processed by <strong class="strong-400">Stripe</strong>. 
     When making a purchase, your card details and other payment information 
-    are collected directly by Stripe — we do not store or have access to your 
+    are collected directly by <strong class="strong-400">Stripe</strong> — we do not store or have access to your 
     full payment data. 
-    You can read Stripe’s privacy policy here: https://stripe.com/privacy`,
+    You can read Stripe’s privacy policy here: <a href="https://stripe.com/privacy" class="tag-a-link" target="_blank">https://stripe.com/privacy</a>`,
   },
   {
     header: "5. Data Storage and Security",

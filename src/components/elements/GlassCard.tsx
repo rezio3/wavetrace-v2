@@ -55,6 +55,7 @@ const GlassCard: React.FC<GlassCardProps> = ({
             fontFamily="DM Sans, sans-serif"
             fontSize={fontSize}
             fontWeight={isTextBold ? 700 : 400}
+            isInnerHtml
           >
             {header}
           </HeaderText>

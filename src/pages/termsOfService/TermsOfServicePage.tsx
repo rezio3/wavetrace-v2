@@ -25,9 +25,10 @@ const TermsOfServicePage = () => {
         style={{ width: isMobile ? "100%" : "50%" }}
         fontSize={16}
       >
-        Welcome to Wavetrace. By accessing or using our website and services,
-        you agree to these Terms of Service. Please read them carefully before
-        making any purchases or submitting requests.
+        Welcome to <strong className="strong-400">Wavetrace</strong>. By
+        accessing or using our website and services, you agree to these Terms of
+        Service. Please read them carefully before making any purchases or
+        submitting requests.
       </CustomText>
       <GlassContainer>
         {termsOfService.map((item, index) => (

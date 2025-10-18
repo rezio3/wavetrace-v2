@@ -11,6 +11,7 @@ type HeaderTextProps = {
   letterSpacing?: number;
   textType?: TextTag;
   style?: React.CSSProperties;
+  isInnerHtml?: boolean;
 };
 
 const CustomText: React.FC<HeaderTextProps> = ({
@@ -22,21 +23,53 @@ const CustomText: React.FC<HeaderTextProps> = ({
   letterSpacing = 1,
   textType = "span",
   style = {},
+  // vvvvvv make this prop true if the text coming from the external object/variable
+  isInnerHtml,
 }) => {
   const Tag = textType;
+  let content: React.ReactNode;
+  console.log(children);
+  if (
+    Array.isArray(children) &&
+    children.every(
+      (c) => typeof c === "string" || c === undefined || c === null
+    )
+  ) {
+    content = children
+      .map((c) => (c === undefined || c === null ? "" : c))
+      .join("");
+  } else {
+    content = children;
+  }
   return (
-    <Tag
-      className={`${className} `}
-      style={{
-        fontSize: fontSize,
-        fontFamily: fontFamily,
-        fontWeight: fontWeight,
-        letterSpacing: letterSpacing,
-        ...style,
-      }}
-    >
-      {children}
-    </Tag>
+    <>
+      {isInnerHtml ? (
+        <Tag
+          className={`${className} `}
+          style={{
+            fontSize: fontSize,
+            fontFamily: fontFamily,
+            fontWeight: fontWeight,
+            letterSpacing: letterSpacing,
+            ...style,
+          }}
+          dangerouslySetInnerHTML={{ __html: content || "" }}
+        />
+      ) : (
+        <Tag
+          className={`${className} `}
+          style={{
+            fontSize: fontSize,
+            fontFamily: fontFamily,
+            fontWeight: fontWeight,
+            letterSpacing: letterSpacing,
+            ...style,
+          }}
+        >
+          {content}
+        </Tag>
+      )}
+    </>
   );
 };
 

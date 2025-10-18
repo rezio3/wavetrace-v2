@@ -1,6 +1,7 @@
 import { Button, CardActions, CardContent } from "@mui/material";
 import HeaderText from "../../elements/HeaderText";
 import { Link } from "react-router-dom";
+import CustomText from "../../elements/CustomText";
 
 type StepBoxProps = {
   number: string;
@@ -30,7 +31,10 @@ const StepBox: React.FC<StepBoxProps> = ({
             {header}
           </HeaderText>
 
-          <p className="step-txt">{txt}</p>
+          <p
+            className="step-txt"
+            dangerouslySetInnerHTML={{ __html: txt || "" }}
+          />
         </CardContent>
         <CardActions className="step-box-buttons">
           <Button size="small" component={Link} to={link}>

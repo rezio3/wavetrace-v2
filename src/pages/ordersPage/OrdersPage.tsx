@@ -22,8 +22,12 @@ const OrdersPage = () => {
           fontSize={20}
           fontFamily={"Roboto, sans-serif"}
           className="text-center"
+          // isInnerHtml
         >
-          Describe the style of music your project requires
+          <strong style={{ fontWeight: 200, fontFamily: "Roboto, sans-serif" }}>
+            Describe the style of music
+          </strong>{" "}
+          your project requires
         </CustomText>
         <CustomText
           fontWeight={100}

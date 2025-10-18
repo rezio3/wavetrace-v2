@@ -17,10 +17,14 @@ export type ContactFormData = {
 };
 
 export const orderTips = [
-  { tip: "Describe the exact type of music you need." },
-  { tip: "Specify the theme or purpose of your project that requires music." },
   {
-    tip: "You can outline specific time intervals where certain sounds or instruments should play (e.g., in a film or stage performance).",
+    tip: `Describe the exact <strong class="strong-200">type of music you need.</strong>`,
+  },
+  {
+    tip: `Specify the theme or purpose of your project that requires <strong class="strong-200">music</strong>.`,
+  },
+  {
+    tip: `You can outline specific time intervals where certain <strong class="strong-200">sounds or instruments</strong> should play (e.g., in a <strong class="strong-200">film</strong> or <strong class="strong-200">stage performance</strong>).`,
   },
   {
     tip: "Attach examples or inspirations as links (e.g., YouTube or SoundCloud) if you have any.",
