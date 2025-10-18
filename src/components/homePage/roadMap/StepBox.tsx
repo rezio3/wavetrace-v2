@@ -1,7 +1,6 @@
 import { Button, CardActions, CardContent } from "@mui/material";
 import HeaderText from "../../elements/HeaderText";
 import { Link } from "react-router-dom";
-import CustomText from "../../elements/CustomText";
 
 type StepBoxProps = {
   number: string;
