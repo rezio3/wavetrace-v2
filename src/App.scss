@@ -45,5 +45,8 @@ body {
 }
 
 .tag-a-link {
-  color: white;
+  color: inherit;
+}
+.no-underscore {
+  text-decoration: none;
 }

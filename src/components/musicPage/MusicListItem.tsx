@@ -8,6 +8,8 @@ import MutedText from "../elements/MutedText";
 import { useEffect, useRef, useState } from "react";
 import DialogProceedWindow from "./proceedWindow/DialogProceedWindow";
 import MusicTypeBadge from "./MusicTypeBadge";
+import { Link } from "react-router-dom";
+import { urlRouter } from "../../routes/urlRouter";
 
 type MusicListItemProps = {
   track: MusicItem;
@@ -59,7 +61,10 @@ const MusicListItem: React.FC<MusicListItemProps> = ({
       <HeaderText headerType="h6" fontSize={16} className="ms-2 music-title">
         {trackTitle}
         <MutedText fontSize={12} className="ms-2 ms-lg-0 artist-span">
-          by {track.artist}
+          by{" "}
+          <Link className="tag-a-link no-underscore" to={urlRouter.artistsPage}>
+            {track.artist}
+          </Link>
         </MutedText>
       </HeaderText>
     </Tooltip>

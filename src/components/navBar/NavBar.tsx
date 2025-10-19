@@ -10,6 +10,7 @@ import MobileNav from "./MobileNav";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 import DescriptionIcon from "@mui/icons-material/Description";
 import GroupsIcon from "@mui/icons-material/Groups";
+import PersonIcon from "@mui/icons-material/Person";
 import { urlRouter } from "../../routes/urlRouter";
 
 const NavBar = () => {
@@ -87,6 +88,11 @@ export default NavBar;
 export const navButtons = [
   { btnText: "Music", link: urlRouter.musicPage, icon: <LibraryMusicIcon /> },
   { btnText: "Orders", link: urlRouter.ordersPage, icon: <DescriptionIcon /> },
+  {
+    btnText: "Artists",
+    link: urlRouter.artistsPage,
+    icon: <PersonIcon />,
+  },
   {
     btnText: "Collaboration",
     link: urlRouter.collaborationPage,

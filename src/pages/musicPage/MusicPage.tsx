@@ -15,11 +15,14 @@ import Notification from "../../components/elements/Notification";
 import { filtersReducer } from "../../components/musicPage/reducer";
 import FilterIndicator from "../../components/musicPage/FilterIndicator";
 import { useWindowSize } from "react-use";
+import { useSearchParams } from "react-router-dom";
 
 const MusicPage = () => {
+  const [searchParams] = useSearchParams();
+  const artistFromUrl = searchParams.get("artist") || "";
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, dispatch] = useReducer(filtersReducer, {
-    searchFilter: "",
+    searchFilter: artistFromUrl,
     typeFilter: "",
   });
 

@@ -20,6 +20,7 @@ import SupportPage from "./pages/supportPage/SupportPage";
 import { urlRouter } from "./routes/urlRouter";
 import SuccessView from "./components/successAndCancelView/SuccessView";
 import CancelView from "./components/successAndCancelView/CancelView";
+import ArtistsPage from "./pages/artistsPage/ArtistsPage";
 
 function App() {
   const darkTheme = createTheme({
@@ -32,8 +33,8 @@ function App() {
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Router>
-        {/* ^^^^^^^^^ Keep it for production ^^^^^^^^^^^ */}
-        {/* <HashRouter> */}
+          {/* ^^^^^^^^^ Keep it for production ^^^^^^^^^^^ */}
+          {/* <HashRouter> */}
           <ScrollToTop />
           <VideoBG />
           <div className="app-container">
@@ -41,6 +42,7 @@ function App() {
             <Routes>
               <Route path={urlRouter.homePage} element={<HomePage />} />
               <Route path={urlRouter.musicPage} element={<MusicPage />} />
+              <Route path={urlRouter.artistsPage} element={<ArtistsPage />} />
               <Route path={urlRouter.ordersPage} element={<OrdersPage />} />
               <Route
                 path={urlRouter.collaborationPage}
@@ -55,12 +57,12 @@ function App() {
                 element={<TermsOfServicePage />}
               />
               <Route path={urlRouter.support} element={<SupportPage />} />
-               <Route path={urlRouter.success} element={<SuccessView />} />
-               <Route path={urlRouter.cancel} element={<CancelView />} />
+              <Route path={urlRouter.success} element={<SuccessView />} />
+              <Route path={urlRouter.cancel} element={<CancelView />} />
             </Routes>
             <Footer />
           </div>
-        {/* </HashRouter> */}
+          {/* </HashRouter> */}
         </Router>
       </ThemeProvider>
     </>
