@@ -76,7 +76,11 @@ export const footerLinks = [
     link: urlRouter.support,
     icon: <QuestionAnswerIcon />,
   },
-  { linkText: "FAQ", link: "", icon: <QuestionMarkIcon /> },
+  {
+    linkText: "FAQ",
+    link: urlRouter.faq,
+    icon: <QuestionMarkIcon />,
+  },
   {
     linkText: "Terms of service",
     link: urlRouter.termsOfService,

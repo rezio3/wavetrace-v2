@@ -21,6 +21,7 @@ import { urlRouter } from "./routes/urlRouter";
 import SuccessView from "./components/successAndCancelView/SuccessView";
 import CancelView from "./components/successAndCancelView/CancelView";
 import ArtistsPage from "./pages/artistsPage/ArtistsPage";
+import FaqPage from "./pages/faqPage/FaqPage";
 
 function App() {
   const darkTheme = createTheme({
@@ -56,6 +57,7 @@ function App() {
                 path={urlRouter.termsOfService}
                 element={<TermsOfServicePage />}
               />
+              <Route path={urlRouter.faq} element={<FaqPage />} />
               <Route path={urlRouter.support} element={<SupportPage />} />
               <Route path={urlRouter.success} element={<SuccessView />} />
               <Route path={urlRouter.cancel} element={<CancelView />} />

@@ -6,7 +6,8 @@ export const urlRouter = {
   collaborationPage: "/collaboration",
   privacyPolicy: "/privacy-policy",
   termsOfService: "/terms-of-service",
+  faq: "/faq",
   support: "/support",
   success: "/success",
-  cancel: "/cancel"
+  cancel: "/cancel",
 };

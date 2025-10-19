@@ -44,6 +44,7 @@ export const termsOfService: TermsAndPolicy[] = [
           "Once the edited track is ready, a watermarked demo is sent to the client. After final approval and payment of the remaining balance, the client receives the full version without watermark.",
           "Wavetrace reserves the right to complete edits within the timeframe communicated in email correspondence.",
           "Refunds of deposits are only applicable if the track cannot be delivered due to our fault.",
+          "If the track is delivered on time as agreed, the deposit is non-refundable.",
         ],
       },
     ],
