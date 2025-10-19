@@ -11,17 +11,17 @@ const SuccessView = () => {
 
   return (
     <SectionWrapper centered className="align-items-center gap-3">
-      <CustomText className="" fontSize={34}>
+      <CustomText className="text-center mt-3" fontSize={34}>
         Thank you for your purchase!
       </CustomText>
-      <CustomText className="" fontSize={24} fontWeight={300}>
+      <CustomText className="text-center" fontSize={24} fontWeight={300}>
         You’ve successfully purchased <b>{title}</b>.
       </CustomText>
       <CheckCircleIcon className="text-success" style={{ fontSize: 50 }} />
-      <CustomText fontWeight={200} className="mb-5">
+      <CustomText fontWeight={200} className="mb-0 mt-lg-5 text-center">
         A download link has been sent to your email: <b>{email}</b>
       </CustomText>
-      <CustomText fontWeight={200} className="mt-5">
+      <CustomText fontWeight={200} className="mt-2 mt-lg-5 text-center">
         If you have any questions, please contact our{" "}
         <Link to={urlRouter.support} className="tag-a-link">
           support team
