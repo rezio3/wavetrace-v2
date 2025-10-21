@@ -1,16 +1,23 @@
 import { AudioPlayer } from "react-audio-play";
-import HeaderText from "../../elements/HeaderText";
-import MutedText from "../../elements/MutedText";
 import type { MusicItem } from "../musicPageCommon";
-import MusicTypeBadge from "../MusicTypeBadge";
 import CustomText from "../../elements/CustomText";
 import { Controller, type Control } from "react-hook-form";
-import { Checkbox, FormControlLabel, TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  Tooltip,
+  tooltipClasses,
+  type TooltipProps,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { urlRouter } from "../../../routes/urlRouter";
 import { red } from "@mui/material/colors";
 import type { BuyOrEditFormData } from "./proceedCommon";
 import { validateEmail } from "../../../assets/validation";
+import HeaderBuyEditModal from "./HeaderBuyEditModal";
+import { styled } from "@mui/material/styles";
+import InfoIcon from "@mui/icons-material/Info";
 
 type BuyPanelProps = {
   track: MusicItem;
@@ -22,16 +29,7 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="mb-3">
-        <div>
-          <div className="d-flex align-items-center justify-content-between">
-            <HeaderText headerType="h6" fontSize={24} fontWeight={700}>
-              {track.title}
-            </HeaderText>
-            <MusicTypeBadge track={track} className="ms-3" />
-          </div>
-          <MutedText fontSize={12}>by {track.artist}</MutedText>
-        </div>
-
+        <HeaderBuyEditModal track={track} />
         <AudioPlayer
           src={track.audioUrl}
           preload="none"
@@ -133,12 +131,19 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
               />
             )}
           />
-          <CustomText
-            fontSize={22}
-            className={"price-and-edit-in-proceed-window pe-0 pe-lg-1"}
+          <div
+            className={
+              "price-and-edit-in-proceed-window pe-0 pe-lg-1 d-flex align-items-center"
+            }
           >
-            Edit
-          </CustomText>
+            <CustomWidthTooltip
+              title="Submit a track edit request, and we’ll respond within 24h with the price and feasibility. Costs range from $5 to $50 depending on the changes."
+              placement="left"
+            >
+              <InfoIcon className="me-2" />
+            </CustomWidthTooltip>
+            <CustomText fontSize={22}>Edit</CustomText>
+          </div>
         </div>
       </div>
     </div>
@@ -146,3 +151,11 @@ const EditPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
 };
 
 export default EditPanel;
+
+const CustomWidthTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    maxWidth: 150,
+  },
+});

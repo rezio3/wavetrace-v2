@@ -1,8 +1,6 @@
 import { AudioPlayer } from "react-audio-play";
-import HeaderText from "../../elements/HeaderText";
 import MutedText from "../../elements/MutedText";
 import type { MusicItem } from "../musicPageCommon";
-import MusicTypeBadge from "../MusicTypeBadge";
 import CustomText from "../../elements/CustomText";
 import { Controller, type Control } from "react-hook-form";
 import { Checkbox, FormControlLabel, TextField } from "@mui/material";
@@ -12,6 +10,7 @@ import { urlRouter } from "../../../routes/urlRouter";
 import { red } from "@mui/material/colors";
 import type { BuyOrEditFormData } from "./proceedCommon";
 import { validateEmail } from "../../../assets/validation";
+import HeaderBuyEditModal from "./HeaderBuyEditModal";
 
 type BuyPanelProps = {
   track: MusicItem;
@@ -23,16 +22,7 @@ const BuyPanel: React.FC<BuyPanelProps> = ({ track, control, isMobile }) => {
   return (
     <div className="d-flex flex-column justify-content-between h-100">
       <div className="mb-3">
-        <div>
-          <div className="d-flex align-items-center justify-content-between">
-            <HeaderText headerType="h6" fontSize={24} fontWeight={700}>
-              {track.title}
-            </HeaderText>
-            <MusicTypeBadge track={track} className="ms-3" />
-          </div>
-          <MutedText fontSize={12}>by {track.artist}</MutedText>
-        </div>
-
+        <HeaderBuyEditModal track={track} />
         <AudioPlayer
           src={track.audioUrl}
           preload="none"
