@@ -18,7 +18,7 @@ import { useWindowSize } from "react-use";
 import { useSearchParams } from "react-router-dom";
 
 const MusicPage = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const artistFromUrl = searchParams.get("artist") || "";
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, dispatch] = useReducer(filtersReducer, {
@@ -45,6 +45,7 @@ const MusicPage = () => {
 
   useEffect(() => {
     setCurrentPage(1);
+    setSearchParams(filters.searchFilter || filters.typeFilter);
   }, [filters]);
 
   const { width } = useWindowSize();
