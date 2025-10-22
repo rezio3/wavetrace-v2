@@ -25,7 +25,7 @@ const SuccessView = () => {
       </CustomText>
       {shortSessionId && (
         <CustomText fontWeight={200} className="mt-1 text-center">
-          Order number: <b>{shortSessionId}</b>
+          Order ID: <b>{shortSessionId}</b>
         </CustomText>
       )}
       <CustomText fontWeight={200} className="mt-2 mt-lg-5 text-center">
