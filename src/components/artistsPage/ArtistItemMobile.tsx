@@ -1,48 +1,53 @@
 import GlassContainer from "../elements/GlassContainer";
-import ImageItem from "../elements/ImageItem";
-
-import HeaderText from "../elements/HeaderText";
-import CustomText from "../elements/CustomText";
-import { Button } from "@mui/material";
+import {
+  Button,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import type { Artist } from "./artists";
-import { Link } from "react-router-dom";
 import { urlRouter } from "../../routes/urlRouter";
+import { Link } from "react-router-dom";
 
 type ArtistItemProps = {
   rightSide: boolean;
   artist: Artist;
 };
 
-const ArtistItemMobile: React.FC<ArtistItemProps> = ({ rightSide, artist }) => {
+const ArtistItemMobile: React.FC<ArtistItemProps> = ({ artist }) => {
   return (
     <GlassContainer noPadding className={`d-flex mb-4 flex-column`}>
-      <div className={`d-flex h-100 ${rightSide && "flex-row-reverse"} `}>
-        <ImageItem src={artist.img} width={160} height={"100%"} />
-        <div className="w-100 d-flex justify-content-center align-items-center">
-          <HeaderText
-            headerType="h4"
-            fontSize={28}
-            className={`mb-2 p-4 text-center`}
-          >
-            {artist.name}
-          </HeaderText>
-        </div>
-      </div>
-      <div className="p-4 w-100 d-flex flex-column align-items-center">
-        <CustomText fontSize={14} fontWeight={300}>
+      <CardMedia
+        component="img"
+        sx={{
+          height: 240,
+          objectPosition: "50% 40%", // 👈 pokazuje górną część zdjęcia
+          objectFit: "cover", // zachowuje proporcje i przycina
+        }}
+        image={artist.img}
+        title="green iguana"
+      />
+      <CardContent className="p-4 pb-4">
+        <Typography gutterBottom variant="h5" component="div">
+          {artist.name}
+        </Typography>
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
           {artist.description}
-        </CustomText>
+        </Typography>
+      </CardContent>
+      <CardActions>
         <Button
-          variant="contained"
-          className="mt-4"
+          className="p-3 pt-0"
+          size="small"
           component={Link}
           to={`${urlRouter.musicPage}?artist=${encodeURIComponent(
             artist.name
           )}`}
         >
-          View Music
+          View music
         </Button>
-      </div>
+      </CardActions>
     </GlassContainer>
   );
 };
