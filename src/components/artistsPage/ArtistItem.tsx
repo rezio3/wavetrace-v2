@@ -20,7 +20,10 @@ const ArtistItem: React.FC<ArtistItemProps> = ({ rightSide, artist }) => {
       className={`d-flex mb-4 ${rightSide && "flex-row-reverse"} `}
     >
       <ImageItem src={artist.img} width={300} height={"100%"} />
-      <div className="px-5 py-4 w-100 d-flex flex-column align-items-start">
+      <div
+        className="px-5 py-4 w-100 d-flex flex-column align-items-start"
+        style={{ minHeight: 330 }}
+      >
         <HeaderText headerType="h4" fontSize={36} className="mb-2 mt-2">
           {artist.name}
         </HeaderText>
