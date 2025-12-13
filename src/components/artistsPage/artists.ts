@@ -1,4 +1,5 @@
 import artistJakubRezler from "../../img/artistsProfile/artistJakubRezler.jpg";
+import artistDanielOfner from "../../img/artistsProfile/artistDanielOfner.jpg";
 
 export const artists: Artist[] = [
   {
@@ -10,6 +11,17 @@ export const artists: Artist[] = [
     creative teamwork. His work is mainly orchestral, often combined with modern electronic 
     textures to craft a distinctive sound.`,
     img: artistJakubRezler,
+    musicLink: "",
+  },
+  {
+    name: "Daniel Ofner",
+    description: `Daniel Ofner is a composer, producer, and violinist with over a decade of 
+    experience creating cinematic, orchestral, and hybrid music for film, games, and media. 
+    A graduate of the Jerusalem Academy of Music and Dance, with additional studies at the Franz 
+    Liszt Academy in Budapest, Daniel blends classical training with modern production to craft 
+    emotionally driven, high-impact tracks. His work combines expressive orchestration, immersive 
+    sound design, and a unique sonic signature that brings stories to life.`,
+    img: artistDanielOfner,
     musicLink: "",
   },
 ];
