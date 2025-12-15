@@ -1,5 +1,7 @@
 import artistJakubRezler from "../../img/artistsProfile/artistJakubRezler.jpg";
+import artistHubertWalkowski from "../../img/artistsProfile/artistHubertWalkowski.jpg";
 import artistDanielOfner from "../../img/artistsProfile/artistDanielOfner.jpg";
+import artistSzymonMichalek from "../../img/artistsProfile/artistSzymonMichalek.jpg";
 
 export const artists: Artist[] = [
   {
@@ -14,6 +16,16 @@ export const artists: Artist[] = [
     musicLink: "",
   },
   {
+    name: "Hubert Walkowski",
+    description: `A first-place laureate of the film music competition at FMF Kraków in 2019 and the 
+    composer behind soundtracks for Polish films and series including "Strachy", "Dziewczyna z Kolonii", 
+    and "Życie dla początkujących". He graduated from the Academy of Music in Wrocław with a master's degree. 
+    His compositional work spans a diverse spectrum of styles, ranging from electronic and pop to full 
+    symphonic orchestra.`,
+    img: artistHubertWalkowski,
+    musicLink: "",
+  },
+  {
     name: "Daniel Ofner",
     description: `Daniel Ofner is a composer, producer, and violinist with over a decade of 
     experience creating cinematic, orchestral, and hybrid music for film, games, and media. 
@@ -22,6 +34,14 @@ export const artists: Artist[] = [
     emotionally driven, high-impact tracks. His work combines expressive orchestration, immersive 
     sound design, and a unique sonic signature that brings stories to life.`,
     img: artistDanielOfner,
+    musicLink: "",
+  },
+  {
+    name: "Szymon Michałek",
+    description: `19-year-old composer and music producer who specializes in fantasy-electronic music, 
+    crafting exquisite hybrids that seamlessly blend synthesizers with prepared classical and orchestral 
+    instruments. His work can be found on Spotify and SoundCloud under the name Simon MichMaxx.`,
+    img: artistSzymonMichalek,
     musicLink: "",
   },
 ];
