@@ -2,6 +2,7 @@ import artistJakubRezler from "../../img/artistsProfile/artistJakubRezler.jpg";
 import artistHubertWalkowski from "../../img/artistsProfile/artistHubertWalkowski.jpg";
 import artistDanielOfner from "../../img/artistsProfile/artistDanielOfner.jpg";
 import artistSzymonMichalek from "../../img/artistsProfile/artistSzymonMichalek.jpg";
+import artistTymoteuszLasik from "../../img/artistsProfile/artistTymoteuszLasik.jpg";
 
 export const artists: Artist[] = [
   {
@@ -23,6 +24,17 @@ export const artists: Artist[] = [
     His compositional work spans a diverse spectrum of styles, ranging from electronic and pop to full 
     symphonic orchestra.`,
     img: artistHubertWalkowski,
+    musicLink: "",
+  },
+  {
+    name: "Tymoteusz Lasik",
+    description: `Tymoteusz Lasik is a graduate of composition from the Karol Lipiński Academy of Music in 
+    Wrocław. His artistic output includes instrumental and vocal-instrumental compositions, as well as 
+    theatrical and film music across various styles and genres, ranging from neoclassical to rock, electronic, 
+    and more. In his work, he focuses on naturalness and emotional expression while simultaneously exploring 
+    uniform, contemplative soundscapes. A particular inspiration for Tymoteusz comes from the authentic 
+    sounds of music from the 1960s-70s, which he often draws upon.`,
+    img: artistTymoteuszLasik,
     musicLink: "",
   },
   {
